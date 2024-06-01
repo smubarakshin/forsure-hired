@@ -9,7 +9,7 @@ export const Navbar = () => {
         <input
           type="search"
           placeholder="Search jobs..."
-          className="sm:text-sm border-double border-2 rounded-md border-teal-400 placeholder:italic placeholder:text-slate-50 bg-slate-400 px-4 w-320"
+          className="sm:text-sm border-double border-2 rounded-md border-teal-400 placeholder:italic placeholder:text-slate-50 bg-slate-400 px-4 w-1/2"
         />
       </div>
     </div>
