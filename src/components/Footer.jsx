@@ -1,5 +1,5 @@
 import React from "react";
 
 export const Footer = () => {
-  return <div>Footer</div>;
+  return <div className="h-[5vh]">Footer</div>;
 };

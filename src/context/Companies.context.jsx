@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CompaniesContext = createContext();
-const API_URL = "https://json-server-tpl.adaptable.app/companies/";
+const API_URL = "http://localhost:5005/companies/";
 
 function CompaniesProvider({ children }) {
   const [companies, setCompanies] = useState([]);
@@ -20,6 +20,16 @@ function CompaniesProvider({ children }) {
   //need to be called in useEffect after companies state changes
   const getCompany = (companyId) => {
     return companies.find((company) => company.id === companyId);
+  };
+
+  const addressToString = (company) => {
+    return (
+      company.address.street +
+      ", " +
+      company.address.city +
+      ", " +
+      company.address.state
+    );
   };
 
   const addCompany = async (ev, companyData) => {
@@ -72,6 +82,7 @@ function CompaniesProvider({ children }) {
         getAllCompanies,
         getCompany,
         deleteCompany,
+        addressToString,
       }}
     >
       {children}
