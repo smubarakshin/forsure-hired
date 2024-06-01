@@ -1,5 +1,12 @@
-import React from "react";
+import React from 'react'
 
-export const ManageJobForm = () => {
-  return <div></div>;
-};
+function ManageJobForm() {
+  return (
+    <form>
+      
+    </form>
+  )
+}
+
+export default ManageJobForm
+
