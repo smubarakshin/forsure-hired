@@ -5,18 +5,6 @@ import { FadeLoader } from "react-spinners";
 
 const JobsList = ({ selectedCompany }) => {
   const { jobs } = useContext(JobsContext);
-  //   const { companies } = useContext(CompaniesContext);
-  //   const companyShortAddress = (job) => {
-  //     const company = companies.find((company) => company.id === job.companyId);
-  //     return (
-  //       company.name + " - " + company.address.city + ", " + company.address.state
-  //     );
-  //   };
-  //   const formatDateToAgo = (date) => {
-  //     let currDate = new Date(date);
-  //     let now = Date.now();
-  //     return Math.floor((now - currDate) / 86400000);
-  //   };
 
   return (
     <div className="flex flex-col gap-4 w-[50vw]">
@@ -27,7 +15,7 @@ const JobsList = ({ selectedCompany }) => {
           Add New
         </button>
       </div>
-      <div className="flex flex-col gap-3 overflow-y-auto">
+      <div className="flex flex-col gap-2 overflow-y-auto">
         {jobs ? (
           selectedCompany.id ? (
             jobs

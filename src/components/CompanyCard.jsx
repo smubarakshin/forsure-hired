@@ -3,7 +3,7 @@ import starIcon from "../images/star-solid.svg";
 
 const CompanyCard = ({ company }) => {
   return (
-    <div className="flex gap-3 p-4 rounded-lg w-[90%] shadow-md bg-white">
+    <div className="flex gap-2 p-4 rounded-lg w-[90%] shadow-md bg-white hover:shadow-none hover:translate-y-[2px] transition-all">
       <img
         src={company.logo}
         alt="company logo"

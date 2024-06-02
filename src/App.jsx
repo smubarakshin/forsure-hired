@@ -19,13 +19,7 @@ const emptyCompany = {
 };
 
 function App() {
-  // const { jobs } = useContext(JobsContext);
-  // const { companies } = useContext(CompaniesContext);
   const [selectedCompany, setSelectedCompany] = useState(emptyCompany);
-
-  // useEffect(() => {
-  //   console.log(selectedCompany);
-  // }, [selectedCompany]);
 
   return (
     <div className="bg-gray-100">

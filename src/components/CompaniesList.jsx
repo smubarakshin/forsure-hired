@@ -17,8 +17,8 @@ const emptyCompany = {
 const CompaniesList = ({ setSelectedCompany }) => {
   const { companies } = useContext(CompaniesContext);
   return (
-    <div className="flex flex-col gap-4 mr-20 border-r-2 border-solid w-[35vw] overflow-y-auto">
-      <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2">
+    <div className="flex flex-col gap-2 mr-20 border-r-2 border-solid w-[35vw] overflow-y-auto">
+      <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3">
         <h1
           className="text-center text-4xl  py-2 font-semibold cursor-pointer"
           onClick={() => setSelectedCompany(emptyCompany)}
@@ -34,7 +34,7 @@ const CompaniesList = ({ setSelectedCompany }) => {
         companies.map((company) => (
           <div
             onClick={() => setSelectedCompany(company)}
-            className="cursor-pointer"
+            className="cursor-pointer "
             key={company.id}
           >
             <CompanyCard company={company} />
