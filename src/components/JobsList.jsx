@@ -3,7 +3,7 @@ import { JobsContext } from "../context/Jobs.context";
 import { JobCard } from "./JobCard";
 import { FadeLoader } from "react-spinners";
 
-const JobsList = () => {
+const JobsList = ({ selectedCompany }) => {
   const { jobs } = useContext(JobsContext);
   //   const { companies } = useContext(CompaniesContext);
   //   const companyShortAddress = (job) => {
@@ -29,7 +29,13 @@ const JobsList = () => {
       </div>
       <div className="flex flex-col gap-3 overflow-y-auto">
         {jobs ? (
-          jobs.map((job) => <JobCard job={job} key={job.id} />)
+          selectedCompany.id ? (
+            jobs
+              .filter((job) => job.companyId === selectedCompany.id)
+              .map((job) => <JobCard job={job} key={job.id} />)
+          ) : (
+            jobs.map((job) => <JobCard job={job} key={job.id} />)
+          )
         ) : (
           <FadeLoader />
         )}

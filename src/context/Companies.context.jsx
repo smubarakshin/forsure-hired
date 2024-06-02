@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const CompaniesContext = createContext();
-const API_URL = "http://localhost:5005/companies/";
+const API_URL = "https://json-server-tpl.adaptable.app/companies/";
 
 function CompaniesProvider({ children }) {
   const [companies, setCompanies] = useState([]);
