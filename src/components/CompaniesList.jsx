@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { CompaniesContext } from "../context/Companies.context";
-import CompanieCard from "./CompanieCard";
+import CompanyCard from "./CompanyCard";
 
 const CompaniesList = () => {
   const { companies } = useContext(CompaniesContext);
@@ -10,17 +10,17 @@ const CompaniesList = () => {
         <h1 className="text-center text-4xl  py-2 font-semibold  ">
           Companies
         </h1>
-        <button className="bg-green-700 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:bg-green-600">
+        <button className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70">
           {" "}
           Add New
         </button>
       </div>
       {companies ? (
         companies.map((company) => (
-          <CompanieCard key={company.id} company={company} />
+          <CompanyCard key={company.id} company={company} />
         ))
       ) : (
-        <p>LoaderFunctionArgs..</p>
+        <p>Loading..</p>
       )}
     </div>
   );

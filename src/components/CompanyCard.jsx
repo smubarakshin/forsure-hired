@@ -1,7 +1,7 @@
 import locationIcon from "../images/location.svg";
 import starIcon from "../images/star-solid.svg";
 
-const CompanieCard = ({ company }) => {
+const CompanyCard = ({ company }) => {
   return (
     <div className="flex gap-3 p-4 rounded-lg w-[90%] shadow-md bg-white">
       <img
@@ -10,7 +10,7 @@ const CompanieCard = ({ company }) => {
         className="h-20 rounded-lg shadow-md"
       />
       <div className="flex flex-col  justify-center gap-1 ">
-        <h1 className="text-slate-700 text-3xl font-semibold">
+        <h1 className="text-slate-700 text-2xl font-semibold">
           {company.name}
         </h1>
         <p className="text-slate-400 inline-flex gap-2 text-sm">
@@ -31,4 +31,4 @@ const CompanieCard = ({ company }) => {
   );
 };
 
-export default CompanieCard;
+export default CompanyCard;
