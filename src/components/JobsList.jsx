@@ -3,7 +3,7 @@ import { JobsContext } from "../context/Jobs.context";
 import { JobCard } from "./JobCard";
 import { FadeLoader } from "react-spinners";
 
-const JobsList = ({ selectedCompany }) => {
+const JobsList = ({ selectedCompany, setSelectedJob, width = "50" }) => {
   const { jobs } = useContext(JobsContext);
   //   const { companies } = useContext(CompaniesContext);
   //   const companyShortAddress = (job) => {
@@ -19,7 +19,7 @@ const JobsList = ({ selectedCompany }) => {
   //   };
 
   return (
-    <div className="flex flex-col gap-4 w-[50vw]">
+    <div className={`flex flex-col gap-4 w-[${width}vw]`}>
       <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2">
         <h1 className="text-center text-4xl  py-2 font-semibold  ">Jobs</h1>
         <button className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70">
