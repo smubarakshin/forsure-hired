@@ -15,7 +15,7 @@ const JobsList = ({ selectedCompany }) => {
           Add New
         </button>
       </div>
-      <div className="flex flex-col gap-2 overflow-y-auto">
+      <div className="flex flex-col gap-2 overflow-y-auto pb-2">
         {jobs ? (
           selectedCompany.id ? (
             jobs
