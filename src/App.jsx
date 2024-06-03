@@ -6,6 +6,7 @@ import CompaniesList from "./components/CompaniesList";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import JobsList from "./components/JobsList";
+import { Routes } from "react-router-dom";
 
 const emptyCompany = {
   logo: "",
@@ -24,6 +25,7 @@ function App() {
   return (
     <div className="bg-gray-100">
       <Navbar />
+      <Routes></Routes>
       <main className="text-slate-700  m-auto  w-[80%] flex gap-2 h-[85vh] max-h-[85vh] overflow-hidden">
         <CompaniesList setSelectedCompany={setSelectedCompany} />
         <JobsList selectedCompany={selectedCompany} />
