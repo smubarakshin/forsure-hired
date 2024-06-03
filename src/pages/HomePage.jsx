@@ -19,12 +19,14 @@ const HomePage = () => {
   const [selectedCompany, setSelectedCompany] = useState(emptyCompany);
   const [showModal, setShowModal] = useState(false);
 
-
   return (
     <main className="text-slate-700  m-auto  w-[80%] flex gap-2 h-[85vh] max-h-[85vh] overflow-hidden">
-      <CompaniesList setSelectedCompany={setSelectedCompany} setShowModal={setShowModal} showModal={showModal}/>
+      <CompaniesList
+        setSelectedCompany={setSelectedCompany}
+        setShowModal={setShowModal}
+      />
       <JobsList selectedCompany={selectedCompany} />
-      {showModal && (<CompanyAddModal/>) }
+      {showModal && <CompanyAddModal setShowModal={setShowModal} />}
     </main>
   );
 };
