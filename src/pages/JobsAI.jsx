@@ -7,15 +7,18 @@ function JobsAI() {
         <h1 className="text-4xl font-semibold mb-8">
           Provide a Job Description
         </h1>
+        <div className="flex gap-4">
+          <button className="bg-slate-200 p-4">Custom</button>
+          <button className="bg-slate-200 p-4">Web Developer</button>
+        </div>
+
         <textarea
-          className="border border-2 border slate-200 rounded-md p-4"
+          className="w-[90%] md:w-full max-w-[700px] border border-2 border slate-200 rounded-md p-4 resize-none"
           name=""
           id=""
           rows={12}
-          cols={85}
-        >
-          kljbjkb
-        </textarea>
+          placeholder="Select a job role to view an example or paste your own description here"
+        />
       </div>
     </>
   );
