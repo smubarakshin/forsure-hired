@@ -1,38 +1,25 @@
-import { useContext, useState, useEffect } from "react";
-import { JobsContext } from "./context/Jobs.context";
-import { CompaniesContext } from "./context/Companies.context";
 import { ToastContainer } from "react-toastify";
-import CompaniesList from "./components/CompaniesList";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
-import JobsList from "./components/JobsList";
-import { Routes } from "react-router-dom";
 
-const emptyCompany = {
-  logo: "",
-  name: "",
-  address: {
-    street: "",
-    city: "",
-    state: "",
-  },
-  rating: 0,
-};
+import { Route, Routes } from "react-router-dom";
+
+
+// Pages
+import HomePage from "./pages/HomePage";
+import Jobs from "./pages/Jobs";
 
 function App() {
-  const [selectedCompany, setSelectedCompany] = useState(emptyCompany);
+
 
   return (
     <div className="bg-gray-100">
       <Navbar />
-      {/* <Routes></Routes> */}
-      <main className="text-slate-700  m-auto  md:w-[80%] flex gap-2 md:h-[85vh] md:max-h-[85vh] overflow-hidden py-5 w-full">
-        <CompaniesList
-          selectedCompany={selectedCompany}
-          setSelectedCompany={setSelectedCompany}
-        />
-        <JobsList selectedCompany={selectedCompany} />
-      </main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/jobs" element={<Jobs />} />
+      </Routes>
+
       <ToastContainer autoClose={2000} />
       <Footer />
     </div>
