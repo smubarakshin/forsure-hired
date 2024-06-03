@@ -18,9 +18,15 @@ const HomePage = () => {
   const [selectedCompany, setSelectedCompany] = useState(emptyCompany);
 
   return (
-    <main className="text-slate-700  m-auto  w-[80%] flex gap-2 h-[85vh] max-h-[85vh] overflow-hidden">
-      <CompaniesList setSelectedCompany={setSelectedCompany} />
-      <JobsList selectedCompany={selectedCompany} />
+    <main className="text-slate-700  m-auto  md:w-[80%] flex gap-2 md:h-[85vh] md:min-h-[85vh] overflow-hidden">
+      <CompaniesList
+        selectedCompany={selectedCompany}
+        setSelectedCompany={setSelectedCompany}
+      />
+      <JobsList
+        selectedCompany={selectedCompany}
+        setSelectedCompany={setSelectedCompany}
+      />
     </main>
   );
 };
