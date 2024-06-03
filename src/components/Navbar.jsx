@@ -6,7 +6,7 @@ export const Navbar = () => {
     <div className="h-[10vh] flex justify-between items-center px-[5%] bg-white shadow-lg">
       <div className="inline-flex gap-2 items-center">
         <img src={logo} alt="logo img" className="h-16" />
-        <h1 className="hidden lg:block text-xl font-bold text-slate-700">
+        <h1 className="hidden md:block text-xl font-bold text-slate-700">
           forSure Hired
         </h1>
       </div>
