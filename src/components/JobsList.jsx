@@ -7,7 +7,9 @@ const JobsList = ({ selectedCompany = null, setSelectedJob, width = "50" }) => {
   const { jobs } = useContext(JobsContext);
 
   return (
+
     <div className={`flex flex-col gap-4 w-[${width}vw]`}>
+
       <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2">
         <h1 className="text-center text-4xl  py-2 font-semibold  ">Jobs</h1>
         <button className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70">
@@ -15,6 +17,7 @@ const JobsList = ({ selectedCompany = null, setSelectedJob, width = "50" }) => {
           Add New
         </button>
       </div>
+
       <div className="flex flex-col gap-3 overflow-y-auto">
         {selectedCompany ? (
           <>
@@ -30,6 +33,7 @@ const JobsList = ({ selectedCompany = null, setSelectedJob, width = "50" }) => {
               <FadeLoader />
             )}
           </>
+
         ) : (
           <>
             {jobs ? (

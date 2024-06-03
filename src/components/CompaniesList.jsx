@@ -14,11 +14,13 @@ const emptyCompany = {
   rating: 0,
 };
 
-const CompaniesList = ({ setSelectedCompany }) => {
+const CompaniesList = ({ selectedCompany, setSelectedCompany }) => {
   const { companies } = useContext(CompaniesContext);
   return (
-    <div className="flex flex-col gap-4 mr-20 border-r-2 border-solid w-[35vw] overflow-y-auto">
-      <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2">
+    <div
+      className={`flex flex-col gap-2 lg:mr-20 lg:border-r-2 lg:border-solid lg:w-[35vw]  w-full`}
+    >
+      <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3">
         <h1
           className="text-center text-4xl  py-2 font-semibold cursor-pointer"
           onClick={() => setSelectedCompany(emptyCompany)}
@@ -30,19 +32,21 @@ const CompaniesList = ({ setSelectedCompany }) => {
           Add New
         </button>
       </div>
-      {companies ? (
-        companies.map((company) => (
-          <div
-            onClick={() => setSelectedCompany(company)}
-            className="cursor-pointer"
-            key={company.id}
-          >
-            <CompanyCard company={company} />
-          </div>
-        ))
-      ) : (
-        <FadeLoader loading={!companies.length} />
-      )}
+      <div className="flex flex-col gap-2 overflow-y-auto pb-2">
+        {companies ? (
+          companies.map((company) => (
+            <div
+              onClick={() => setSelectedCompany(company)}
+              className="cursor-pointer "
+              key={company.id}
+            >
+              <CompanyCard company={company} />
+            </div>
+          ))
+        ) : (
+          <FadeLoader loading={!companies.length} />
+        )}
+      </div>
     </div>
   );
 };

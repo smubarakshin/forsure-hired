@@ -26,17 +26,21 @@ export const JobCard = ({ job }) => {
   };
 
   return (
-    <div className="flex justify-between px-2 shadow-md rounded-lg bg-white mr-2">
+    <div className="flex justify-between px-2 shadow-md rounded-lg bg-white mr-2 cursor-pointer hover:shadow-none hover:translate-y-[2px] transition-all">
       <div className="flex flex-col gap-2 p-4 ">
         <h1 className="text-2xl font-semibold">{job.title}</h1>
         <p className="text-slate-400">{companyShortAddress(job)}</p>
         <p className=" text-white inline-flex gap-1">
+
           {job.techs.map((tech, i) => (
+
             <span
               key={i}
               className="bg-green-600 px-2 text-sm rounded-full whitespace-nowrap"
             >
+
               {tech}
+
             </span>
           ))}
         </p>
