@@ -14,10 +14,12 @@ const emptyCompany = {
   rating: 0,
 };
 
-const CompaniesList = ({ setSelectedCompany }) => {
+const CompaniesList = ({ selectedCompany, setSelectedCompany }) => {
   const { companies } = useContext(CompaniesContext);
   return (
-    <div className="flex flex-col gap-2 mr-20 border-r-2 border-solid w-[35vw] ">
+    <div
+      className={`flex flex-col gap-2 lg:mr-20 lg:border-r-2 lg:border-solid lg:w-[35vw]  w-full`}
+    >
       <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3">
         <h1
           className="text-center text-4xl  py-2 font-semibold cursor-pointer"

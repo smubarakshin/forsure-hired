@@ -7,7 +7,7 @@ const JobsList = ({ selectedCompany }) => {
   const { jobs } = useContext(JobsContext);
 
   return (
-    <div className="flex flex-col gap-4 w-[50vw]">
+    <div className="lg:flex flex-col gap-4 lg:w-[45vw] hidden">
       <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2">
         <h1 className="text-center text-4xl  py-2 font-semibold  ">Jobs</h1>
         <button className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70">
