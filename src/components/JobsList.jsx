@@ -3,20 +3,8 @@ import { JobsContext } from "../context/Jobs.context";
 import { JobCard } from "./JobCard";
 import { FadeLoader } from "react-spinners";
 
-const JobsList = ({ selectedCompany, setSelectedJob, width = "50" }) => {
+const JobsList = ({ selectedCompany = null, setSelectedJob, width = "50" }) => {
   const { jobs } = useContext(JobsContext);
-  //   const { companies } = useContext(CompaniesContext);
-  //   const companyShortAddress = (job) => {
-  //     const company = companies.find((company) => company.id === job.companyId);
-  //     return (
-  //       company.name + " - " + company.address.city + ", " + company.address.state
-  //     );
-  //   };
-  //   const formatDateToAgo = (date) => {
-  //     let currDate = new Date(date);
-  //     let now = Date.now();
-  //     return Math.floor((now - currDate) / 86400000);
-  //   };
 
   return (
     <div className={`flex flex-col gap-4 w-[${width}vw]`}>
@@ -28,16 +16,36 @@ const JobsList = ({ selectedCompany, setSelectedJob, width = "50" }) => {
         </button>
       </div>
       <div className="flex flex-col gap-3 overflow-y-auto">
-        {jobs ? (
-          selectedCompany.id ? (
-            jobs
-              .filter((job) => job.companyId === selectedCompany.id)
-              .map((job) => <JobCard job={job} key={job.id} />)
-          ) : (
-            jobs.map((job) => <JobCard job={job} key={job.id} />)
-          )
+        {selectedCompany ? (
+          <>
+            {jobs ? (
+              selectedCompany.id ? (
+                jobs
+                  .filter((job) => job.companyId === selectedCompany.id)
+                  .map((job) => <JobCard job={job} key={job.id} />)
+              ) : (
+                jobs.map((job) => <JobCard job={job} key={job.id} />)
+              )
+            ) : (
+              <FadeLoader />
+            )}
+          </>
         ) : (
-          <FadeLoader />
+          <>
+            {jobs ? (
+              jobs.map((job) => (
+                <div
+                  onClick={() => setSelectedJob(job)}
+                  className="cursor-pointer"
+                  key={job.id}
+                >
+                  <JobCard job={job} key={job.id} />
+                </div>
+              ))
+            ) : (
+              <FadeLoader />
+            )}
+          </>
         )}
       </div>
     </div>

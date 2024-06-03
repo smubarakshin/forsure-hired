@@ -6,9 +6,17 @@ export const JobCard = ({ job }) => {
 
   const companyShortAddress = (job) => {
     const company = companies.find((company) => company.id === job.companyId);
-    return (
-      company.name + " - " + company.address.city + ", " + company.address.state
-    );
+    if (company) {
+      return (
+        company.name +
+        " - " +
+        company.address.city +
+        ", " +
+        company.address.state
+      );
+    } else {
+      return "N/A";
+    }
   };
 
   const formatDateToAgo = (date) => {
