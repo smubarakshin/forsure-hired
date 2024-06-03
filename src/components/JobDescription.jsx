@@ -14,14 +14,14 @@ function JobDescription({ selectedJob, associatedCompany }) {
 
   return (
     <>
-      <div className="flex flex-col gap-4 w-[50vw]">
+      <div className="flex flex-col gap-4 min-w-[50vw]">
         <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2">
           <h1 className="text-center text-4xl  py-2 font-semibold  ">
             Job Description
           </h1>
         </div>
         {selectedJob && associatedCompany ? (
-          <div className="my-0 mx-auto">
+          <div className="my-0 px-20">
             <div className="flex items-center gap-4 mb-4">
               <img
                 className="w-20 object-cover"

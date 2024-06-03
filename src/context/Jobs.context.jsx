@@ -14,9 +14,15 @@ function JobsProvider({ children }) {
       console.log(error.message);
     }
   };
-  //need to be called in useEffect after companies state changes
-  const getJob = (jobId) => {
-    return companies.find((job) => job.id === jobId);
+  //need to be called in useEffect after Jobs state changes
+  const getJob = async (jobId) => {
+    try {
+      const response = await axios.get(API_URL + jobId);
+      return response.data;
+    } catch (error) {
+      console.log(error.message);
+    }
+    // return jobs.find((job) => job.id === jobId);
   };
 
   const addJob = async (jobData) => {

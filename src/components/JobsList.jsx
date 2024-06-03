@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { JobsContext } from "../context/Jobs.context";
 import { JobCard } from "./JobCard";
 import { FadeLoader } from "react-spinners";
-import arrowBack from "../images/arrow-back.svg";
 
 const emptyCompany = {
   logo: "",
@@ -26,16 +25,10 @@ const JobsList = ({
   return (
     <div
       className={`${
-        !selectedCompany.id ? "hidden" : "flex"
+        selectedCompany && !selectedCompany.id ? "hidden" : "flex"
       } md:flex flex-col gap-4 md:w-[${width}vw] w-full`}
     >
       <div className="relative inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 w-full mb-3 ">
-        <img
-          src={arrowBack}
-          alt="arrow back"
-          className="absolute top-2 left-2 h-10 md:hidden"
-          onClick={() => setSelectedCompany(emptyCompany)}
-        />
         <h1 className="text-center text-4xl  py-2 font-semibold  ">Jobs</h1>
         <button className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70">
           {" "}

@@ -1,7 +1,8 @@
 import React from "react";
-import { useContext, useState, useEffect } from "react";
+import { useState } from "react";
 import CompaniesList from "../components/CompaniesList";
 import JobsList from "../components/JobsList";
+import arrowBack from "../images/arrow-back.svg";
 
 const emptyCompany = {
   logo: "",
@@ -23,10 +24,18 @@ const HomePage = () => {
         selectedCompany={selectedCompany}
         setSelectedCompany={setSelectedCompany}
       />
-      <JobsList
-        selectedCompany={selectedCompany}
-        setSelectedCompany={setSelectedCompany}
-      />
+      <div className="relative">
+        <img
+          src={arrowBack}
+          alt="arrow back"
+          className="absolute top-2 left-2 h-10 md:hidden z-20"
+          onClick={() => setSelectedCompany(emptyCompany)}
+        />
+        <JobsList
+          selectedCompany={selectedCompany}
+          setSelectedCompany={setSelectedCompany}
+        />
+      </div>
     </main>
   );
 };
