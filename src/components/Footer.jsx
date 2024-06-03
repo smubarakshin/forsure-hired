@@ -3,7 +3,7 @@ import githubIco from "../images/github.svg";
 
 export const Footer = () => {
   return (
-    <div className="h-[5vh] flex flex-col md:flex-row gap-4 justify-center items-center py-3 text-slate-500">
+    <div className="md:h-[5vh] flex flex-col md:flex-row md:gap-4 justify-center items-center py-3 text-slate-500 bg-white">
       <p>© forSure-Hired 2024</p>
       <span className="hidden md:block">|</span>
       <p>
