@@ -88,14 +88,12 @@ function JobDescription({ selectedJob, associatedCompany }) {
               <div className="flex gap-2 flex-wrap w-[75%]">
                 {selectedJob.techs.map((tech, index) => {
                   return (
-                    <>
-                      <p
-                        className="bg-slate-200 w-fit py-2 px-4 rounded font-semibold"
-                        key={index}
-                      >
-                        {tech}
-                      </p>
-                    </>
+                    <p
+                      className="bg-slate-200 min-w-fit py-2 px-4 rounded font-semibold whitespace-nowrap"
+                      key={index}
+                    >
+                      {tech}
+                    </p>
                   );
                 })}
               </div>
