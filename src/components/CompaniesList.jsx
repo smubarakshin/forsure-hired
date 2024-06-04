@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CompaniesContext } from "../context/Companies.context";
 import CompanyCard from "./CompanyCard";
 import { FadeLoader } from "react-spinners";
@@ -14,8 +14,13 @@ const emptyCompany = {
   rating: 0,
 };
 
-const CompaniesList = ({ selectedCompany, setSelectedCompany }) => {
+const CompaniesList = ({
+  selectedCompany,
+  setSelectedCompany,
+  setShowModal,
+}) => {
   const { companies } = useContext(CompaniesContext);
+
   return (
     <div
       className={`${
@@ -29,7 +34,10 @@ const CompaniesList = ({ selectedCompany, setSelectedCompany }) => {
         >
           All Companies
         </h1>
-        <button className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70">
+        <button
+          className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70"
+          onClick={() => setShowModal(true)}
+        >
           {" "}
           Add New
         </button>
