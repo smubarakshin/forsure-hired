@@ -3,6 +3,9 @@ import { CompaniesContext } from "../context/Companies.context";
 import CompanyCard from "./CompanyCard";
 import { FadeLoader } from "react-spinners";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 const emptyCompany = {
   logo: "",
   name: "",
@@ -45,12 +48,19 @@ const CompaniesList = ({
       <div className="flex flex-col gap-2 overflow-y-auto pb-2">
         {companies ? (
           companies.map((company) => (
-            <div
-              onClick={() => setSelectedCompany(company)}
-              className="cursor-pointer "
-              key={company.id}
-            >
-              <CompanyCard company={company} />
+            <div className="relative">
+              <div
+                onClick={() => setSelectedCompany(company)}
+                className="cursor-pointer"
+                key={company.id}
+              >
+                <CompanyCard company={company} />
+              </div>
+              {/* TRASH ICON BELOW */}
+              <FontAwesomeIcon
+                className="absolute top-3 right-8 text-xs text-slate-300 cursor-pointer hover:text-red-500 hover:scale-125"
+                icon={faTrash}
+              />
             </div>
           ))
         ) : (
