@@ -34,7 +34,10 @@ const CompaniesList = ({
         >
           All Companies
         </h1>
-        <button className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70">
+        <button
+          className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70"
+          onClick={() => setShowModal(true)}
+        >
           {" "}
           Add New
         </button>

@@ -2,6 +2,8 @@ import React from "react";
 import { useContext, useState, useEffect } from "react";
 import { CompaniesContext } from "../context/Companies.context";
 
+import arrowBack from "../images/arrow-back.svg";
+
 import CompaniesList from "../components/CompaniesList";
 import JobsList from "../components/JobsList";
 import CompanyAddModal from "../components/CompanyAddModal";
