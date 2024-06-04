@@ -6,8 +6,12 @@ import { Route, Routes } from "react-router-dom";
 
 // Pages
 import HomePage from "./pages/HomePage";
-import Jobs from "./pages/Jobs";
+
+import JobsPage from "./pages/JobsPage";
+
+
 import JobsAI from "./pages/JobsAI";
+
 
 function App() {
   return (
@@ -15,8 +19,12 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/jobs" element={<Jobs />} />
+
+        <Route path="/jobs" element={<JobsPage />} />
+        <Route path="/jobs/:jobId" element={<JobsPage />} />
+
         <Route path="/ai" element={<JobsAI />} />
+
       </Routes>
 
       <ToastContainer autoClose={2000} />
