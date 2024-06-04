@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-function NavLinks() {
+function NavLinks({ setIsOpen }) {
   return (
     <>
       <NavLink
+        onClick={() => setIsOpen(false)}
         className={({ isActive }) =>
           isActive ? "text-green-600 font-semibold" : "hover:text-green-500"
         }
@@ -13,6 +14,7 @@ function NavLinks() {
         Home
       </NavLink>
       <NavLink
+        onClick={() => setIsOpen(false)}
         className={({ isActive }) =>
           isActive ? "text-green-600 font-semibold" : "hover:text-green-500"
         }
@@ -21,6 +23,7 @@ function NavLinks() {
         Jobs
       </NavLink>
       <NavLink
+        onClick={() => setIsOpen(false)}
         className={({ isActive }) =>
           isActive ? "text-green-600 font-semibold" : "hover:text-green-500"
         }

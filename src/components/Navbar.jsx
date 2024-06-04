@@ -17,8 +17,8 @@ export const Navbar = () => {
     <div className="flex flex-wrap justify-between items-center px-[5%] bg-white shadow-lg">
       <div className="flex flex-row items-center justify-between w-[100%]">
         <div className="inline-flex gap-2 items-center">
-          <NavLink to="/">
-            <img src={logo} alt="logo img" className="h-20" />
+          <NavLink onClick={() => setIsOpen(false)} to="/">
+            <img src={logo} alt="logo img" className="h-16" />
           </NavLink>
           <h1 className="text-3xl font-bold text-slate-700">forSure Hired</h1>
         </div>
@@ -42,8 +42,8 @@ export const Navbar = () => {
         </button>
       </div>
       {isOpen && (
-        <div className="flex basis-full flex-col items-center gap-4 py-6 text-lg text-slate-600">
-          <NavLinks />
+        <div className="md:hidden flex basis-full flex-col items-center gap-4 py-6 text-lg text-slate-600">
+          <NavLinks setIsOpen={setIsOpen} />
         </div>
       )}
     </div>
