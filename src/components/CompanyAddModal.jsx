@@ -17,12 +17,15 @@ function CompanyAddModal({ setShowModal }) {
 
   const [formData, setFormData] = useState({ ...company });
 
-  // Captures the current date
-  const datePickerId = new Date().toISOString().split("T")[0];
+  console.log(formData)
 
   // Changes the state of the form everytime there is a change
   const handleFormChange = (event) => {
     setFormData((prevFormData) => {
+        // if(event.target.name === "") {
+
+        // }
+
       return {
         ...prevFormData,
         [event.target.name]: event.target.value,
@@ -31,18 +34,18 @@ function CompanyAddModal({ setShowModal }) {
   };
 
   // Validated the form (checks if all inputs are filled out)
-  const isFormFilled = () => {
-    for (let key in formData) {
-      if (formData[key] === "") {
-        return false;
-      }
-    }
-    return true;
-  };
+//   const isFormFilled = () => {
+//     for (let key in formData) {
+//       if (formData[key] === "") {
+//         return false;
+//       }
+//     }
+//     return true;
+//   };
 
   const handleSubmit = (e) => {
     addCompany(e, formData);
-    closeModal(false);
+    setShowModal(false);
   };
 
   return (
@@ -69,12 +72,36 @@ function CompanyAddModal({ setShowModal }) {
             {/*body*/}
             <div className="relative p-6 flex-auto">
               <form className="w-full max-w-lg" onSubmit={handleSubmit}>
+
+                 {/* Company Logo */}
+                 <div className="flex flex-wrap -mx-3 mb-6">
+                  <div className="w-full px-3">
+                    <label
+                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="logo"
+                    >
+                      Logo:
+                    </label>
+                    <input
+                      onChange={handleFormChange}
+                      value={formData.logo}
+                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="logo"
+                      name="logo"
+                      type="url"
+                      placeholder="Logo"
+                      required
+                    />
+                  </div>
+                </div>
+                
+                
                 {/* Company Name */}
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full px-3">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="title"
+                      htmlFor="name"
                     >
                       Name:
                     </label>
@@ -82,29 +109,34 @@ function CompanyAddModal({ setShowModal }) {
                       onChange={handleFormChange}
                       value={formData.name}
                       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                      id="title"
-                      name="title"
+                      id="name"
+                      name="name"
                       type="text"
-                      placeholder="Task Title"
+                      placeholder="Company"
+                      required
                     />
                   </div>
                 </div>
 
+                
                 {/* Address Description */}
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full px-3">
-                    <label
+                    <span
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="description"
+                      htmlFor="address"
+                      id="address"
+                      name="address"
                     >
                       Address:
-                    </label>
+                    </span>
                   </div>
+                 
                   {/* Address > Street */}
                   <div className="w-full px-3">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="description"
+                      htmlFor="street"
                     >
                       Street:
                     </label>
@@ -112,18 +144,20 @@ function CompanyAddModal({ setShowModal }) {
                       onChange={handleFormChange}
                       value={formData.address.street}
                       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                      id="description"
-                      name="description"
+                      id="street"
+                      name="address.street"
                       type="text"
-                      placeholder="address"
+                      placeholder="Street"
+                      required
                     />
                   </div>
 
+                 
                   {/* Address > City */}
                   <div className="w-full px-3">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="description"
+                      htmlFor="city"
                     >
                       City:
                     </label>
@@ -131,50 +165,78 @@ function CompanyAddModal({ setShowModal }) {
                       onChange={handleFormChange}
                       value={formData.address.city}
                       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                      id="description"
-                      name="description"
+                      id="city"
+                      name="address.city"
                       type="text"
-                      placeholder="address"
+                      placeholder="City"
+                      required
                     />
                   </div>
 
+                 
                   {/* Address > State */}
                   <div className="w-full px-3">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                      htmlFor="description"
+                      htmlFor="state"
                     >
                       State:
                     </label>
                     <input
                       onChange={handleFormChange}
-                      value={formData.address.state}
+                      value={formData.state}
                       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                      id="description"
-                      name="description"
+                      id="state"
+                      name="address.state"
                       type="text"
-                      placeholder="address"
+                      placeholder="State"
+                      required
                     />
                   </div>
                 </div>
+
+                 {/* Rating */}
+                 <div className="flex flex-wrap -mx-3 mb-6">
+                  <div className="w-full px-3">
+                    <label
+                      className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+                      htmlFor="rating"
+                    >
+                      Rating:
+                    </label>
+                    <input
+                      onChange={handleFormChange}
+                      value={formData.rating}
+                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      id="rating"
+                      name="rating"
+                      type="text"
+                      placeholder="Rating"
+                      required
+                    />
+                  </div>
+                </div>
+
+
 
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                   <button
                     className="text-slate-600 bg-gray-300 hover:bg-gray-400 font-bold uppercase px-6 py-3 text-sm outline-none rounded focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 "
                     type="button"
-                    onClick={() => closeModal(false)}
+                    onClick={() => setShowModal(false)}
                   >
                     Cancel
                   </button>
                   <button
                     className="bg-[#775DA6] hover:bg-[#544274] text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 disabled:cursor-not-allowed disabled:hover:bg-[#775DA6]"
                     type="submit"
-                    disabled={
-                      !isFormFilled() ||
-                      JSON.stringify(formData) === JSON.stringify(company)
-                    }
+                    // disabled={
+                    //   !isFormFilled() ||
+                    //   JSON.stringify(formData) === JSON.stringify(company)
+                    // }
+                    onClick={handleSubmit}
                   >
-                    {formData.id ? "Save" : "Create"}
+                    {formData.id ? "Cancel" : "Create"}
                   </button>
                 </div>
               </form>
