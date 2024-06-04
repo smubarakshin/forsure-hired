@@ -22,7 +22,7 @@ const CompaniesList = ({ selectedCompany, setSelectedCompany }) => {
         selectedCompany.id ? "hidden" : "flex"
       } md:flex flex-col gap-2 md:mr-20 md:border-r-2 md:border-solid md:w-[35vw] w-full  `}
     >
-      <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3">
+      <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3 py-2">
         <h1
           className="text-center text-4xl  py-2 font-semibold cursor-pointer"
           onClick={() => setSelectedCompany(emptyCompany)}

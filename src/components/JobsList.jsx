@@ -3,21 +3,10 @@ import { JobsContext } from "../context/Jobs.context";
 import { JobCard } from "./JobCard";
 import { FadeLoader } from "react-spinners";
 
-const emptyCompany = {
-  logo: "",
-  name: "",
-  address: {
-    street: "",
-    city: "",
-    state: "",
-  },
-  rating: 0,
-};
-
 const JobsList = ({
   selectedCompany = null,
-  setSelectedCompany,
   setSelectedJob,
+  selectedJob = null,
   width = "40",
 }) => {
   const { jobs } = useContext(JobsContext);
@@ -25,10 +14,13 @@ const JobsList = ({
   return (
     <div
       className={`${
-        selectedCompany && !selectedCompany.id ? "hidden" : "flex"
+        (selectedCompany && !selectedCompany.id) ||
+        (selectedJob && selectedJob.id)
+          ? "hidden"
+          : "flex"
       } md:flex flex-col gap-4 md:w-[${width}vw] w-full`}
     >
-      <div className="relative inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 w-full mb-3 ">
+      <div className=" inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 w-full mb-3 py-2">
         <h1 className="text-center text-4xl  py-2 font-semibold  ">Jobs</h1>
         <button className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70">
           {" "}
@@ -36,7 +28,7 @@ const JobsList = ({
         </button>
       </div>
 
-      <div className="flex flex-col gap-3 overflow-y-auto pb-2 ">
+      <div className="flex flex-col gap-3 md:overflow-y-auto pb-2 ">
         {selectedCompany ? (
           <>
             {jobs ? (
