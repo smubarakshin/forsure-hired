@@ -14,17 +14,21 @@ function JobDescription({ selectedJob, associatedCompany }) {
 
   return (
     <>
-      <div className="flex flex-col gap-4 w-[50vw]">
-        <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2">
+      <div
+        className={`${
+          !selectedJob.id ? "hidden" : "flex"
+        } md:flex flex-col gap-4 min-w-[50vw] px-2 w-full mb-2`}
+      >
+        <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3 py-2">
           <h1 className="text-center text-4xl  py-2 font-semibold  ">
             Job Description
           </h1>
         </div>
         {selectedJob && associatedCompany ? (
-          <div className="my-0 mx-auto">
+          <div className="my-0 md:px-20 px-4 py-10 bg-white rounded-lg overflow-y-auto">
             <div className="flex items-center gap-4 mb-4">
               <img
-                className="w-20 object-cover"
+                className="w-16 rounded-md object-cover"
                 src={associatedCompany.logo}
                 alt="company logo"
               />
@@ -36,10 +40,12 @@ function JobDescription({ selectedJob, associatedCompany }) {
             </div>
 
             <div className="border-b-2 border-slate-300 pb-4 mb-4">
-              <h2 className="text-4xl font-bold tracking-wide mb-4">
+              <h2 className="text-3xl font-bold tracking-wide mb-4">
                 {selectedJob.title}
               </h2>
-              <p>Posted {formatDateToAgo(selectedJob.creationDate)} days ago</p>
+              <p>
+                Applied {formatDateToAgo(selectedJob.creationDate)} days ago
+              </p>
             </div>
 
             <div className="border-b-2 border-slate-300 pb-4 mb-4">
