@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CompaniesContext } from "../context/Companies.context";
 
 function CompanyAddModal({ setShowModal }) {
@@ -13,35 +13,33 @@ function CompanyAddModal({ setShowModal }) {
     rating: 0,
   });
 
-  const { addCompany } = useContext(CompaniesContext);
+  const { addCompany, getAllCompanies, setCompanies, companies } =
+    useContext(CompaniesContext);
 
   const [formData, setFormData] = useState({ ...company });
 
-  console.log(formData)
-
   // Changes the state of the form everytime there is a change
   const handleFormChange = (event) => {
-    setFormData((prevFormData) => {
-        // if(event.target.name === "") {
+    const { name, value } = event.target;
+    const nameParts = name.split(".");
 
-        // }
-
-      return {
+    if (nameParts[0] === "address") {
+      setFormData((prevFormData) => ({
         ...prevFormData,
-        [event.target.name]: event.target.value,
-      };
-    });
+        address: {
+          ...prevFormData.address,
+          [nameParts[1]]: value,
+        },
+      }));
+    } else {
+      setFormData((prevFormData) => {
+        return {
+          ...prevFormData,
+          [name]: value,
+        };
+      });
+    }
   };
-
-  // Validated the form (checks if all inputs are filled out)
-//   const isFormFilled = () => {
-//     for (let key in formData) {
-//       if (formData[key] === "") {
-//         return false;
-//       }
-//     }
-//     return true;
-//   };
 
   const handleSubmit = (e) => {
     addCompany(e, formData);
@@ -72,9 +70,8 @@ function CompanyAddModal({ setShowModal }) {
             {/*body*/}
             <div className="relative p-6 flex-auto">
               <form className="w-full max-w-lg" onSubmit={handleSubmit}>
-
-                 {/* Company Logo */}
-                 <div className="flex flex-wrap -mx-3 mb-6">
+                {/* Company Logo */}
+                <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full px-3">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -94,8 +91,7 @@ function CompanyAddModal({ setShowModal }) {
                     />
                   </div>
                 </div>
-                
-                
+
                 {/* Company Name */}
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full px-3">
@@ -118,7 +114,6 @@ function CompanyAddModal({ setShowModal }) {
                   </div>
                 </div>
 
-                
                 {/* Address Description */}
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full px-3">
@@ -131,7 +126,7 @@ function CompanyAddModal({ setShowModal }) {
                       Address:
                     </span>
                   </div>
-                 
+
                   {/* Address > Street */}
                   <div className="w-full px-3">
                     <label
@@ -152,7 +147,6 @@ function CompanyAddModal({ setShowModal }) {
                     />
                   </div>
 
-                 
                   {/* Address > City */}
                   <div className="w-full px-3">
                     <label
@@ -173,7 +167,6 @@ function CompanyAddModal({ setShowModal }) {
                     />
                   </div>
 
-                 
                   {/* Address > State */}
                   <div className="w-full px-3">
                     <label
@@ -195,8 +188,8 @@ function CompanyAddModal({ setShowModal }) {
                   </div>
                 </div>
 
-                 {/* Rating */}
-                 <div className="flex flex-wrap -mx-3 mb-6">
+                {/* Rating */}
+                <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full px-3">
                     <label
                       className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
@@ -216,8 +209,6 @@ function CompanyAddModal({ setShowModal }) {
                     />
                   </div>
                 </div>
-
-
 
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                   <button

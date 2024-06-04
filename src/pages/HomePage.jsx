@@ -1,5 +1,7 @@
 import React from "react";
 import { useContext, useState, useEffect } from "react";
+import { CompaniesContext } from "../context/Companies.context";
+
 import CompaniesList from "../components/CompaniesList";
 import JobsList from "../components/JobsList";
 import CompanyAddModal from "../components/CompanyAddModal";
@@ -16,8 +18,16 @@ const emptyCompany = {
 };
 
 const HomePage = () => {
+  const { companies, getAllCompanies } = useContext(CompaniesContext);
+  const [companiesCopy, setCompaniesCopy] = useState(companies);
+
   const [selectedCompany, setSelectedCompany] = useState(emptyCompany);
   const [showModal, setShowModal] = useState(false);
+
+  // console.log(companies);
+  useEffect(() => {
+    getAllCompanies();
+  }, [companiesCopy]);
 
   return (
     <main className="text-slate-700  m-auto  w-[80%] flex gap-2 h-[85vh] max-h-[85vh] overflow-hidden">

@@ -36,6 +36,7 @@ function CompaniesProvider({ children }) {
     ev.preventDefault();
     try {
       const response = await axios.post(API_URL, companyData);
+      setCompanies([response.data, ...companies]);
       response.statusText === 201 &&
         toast.success("Company Added Successfull!", {
           position: "top-center",
@@ -48,6 +49,7 @@ function CompaniesProvider({ children }) {
   const deleteCompany = async (companyId) => {
     try {
       const response = await axios.delete(API_URL + companyId);
+      setCompanies(getAllCompanies());
       response.status === 200 &&
         toast.error("Company Deleted!", {
           position: "top-center",
