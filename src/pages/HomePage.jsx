@@ -30,13 +30,27 @@ const HomePage = () => {
   }, [companiesCopy]);
 
   return (
-    <main className="text-slate-700  m-auto  w-[80%] flex gap-2 h-[85vh] max-h-[85vh] overflow-hidden">
+    <main className="text-slate-700 md:mx-auto md:w-[80%] flex gap-2 md:h-[85vh] md:min-h-[85vh] overflow-hidden">
       <CompaniesList
+        selectedCompany={selectedCompany}
         setSelectedCompany={setSelectedCompany}
         setShowModal={setShowModal}
       />
-      <JobsList selectedCompany={selectedCompany} />
+      {/* <div className="relative md:h-[100%] md:min-h-[100%] overflow-hidden"> */}
+      {selectedCompany.id && (
+        <img
+          src={arrowBack}
+          alt="arrow back"
+          className="absolute mt-4 left-2 h-10 md:hidden z-20"
+          onClick={() => setSelectedCompany(emptyCompany)}
+        />
+      )}
+      <JobsList
+        selectedCompany={selectedCompany}
+        setSelectedCompany={setSelectedCompany}
+      />
       {showModal && <CompanyAddModal setShowModal={setShowModal} />}
+      {/* </div> */}
     </main>
   );
 };
