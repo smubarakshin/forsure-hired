@@ -1,5 +1,7 @@
 import { useState, useEffect, createContext } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+
 const JobsContext = createContext();
 const API_URL = "https://json-server-tpl.adaptable.app/jobs/";
 
