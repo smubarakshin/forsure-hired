@@ -6,7 +6,9 @@ export const JobCard = ({ job }) => {
   const { companies } = useContext(CompaniesContext);
 
   const companyShortAddress = (job) => {
-    const company = companies.length && companies.find((company) => company.id === job.companyId);
+    const company =
+      companies.length &&
+      companies.find((company) => company.id === job.companyId);
     if (company) {
       return (
         company.name +
@@ -28,7 +30,7 @@ export const JobCard = ({ job }) => {
 
   return (
     <Link to={`/jobs/${job.id}`}>
-      <div className="flex justify-between px-2 shadow-md rounded-lg bg-white mr-2 cursor-pointer hover:shadow-none hover:translate-y-[2px] transition-all mx-2">
+      <div className="flex justify-between px-2 shadow-md rounded-lg bg-white cursor-pointer hover:shadow-none hover:translate-y-[2px] transition-all ">
         <div className="flex flex-col gap-2 p-4 ">
           <h1 className="text-2xl font-semibold">{job.title}</h1>
           <p className="text-slate-400">{companyShortAddress(job)}</p>
