@@ -56,6 +56,9 @@ function JobsProvider({ children }) {
   const updateJob = async (jobData, jobId) => {
     try {
       const response = await axios.put(API_URL + jobId, jobData);
+      setJobs((prevJobs) =>
+        prevJobs.map((job) => (job.id === jobId ? jobData : job))
+      );
       response.status === 200 &&
         toast.success("Job Updated Successfull!", {
           position: "top-center",
