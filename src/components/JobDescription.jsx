@@ -5,12 +5,12 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import DropDown3Dots from "./DropDown3Dots";
-import DeleteModal from "./DeleteModal";
+import DeleteJobModal from "./DeleteJobModal";
 import { JobsContext } from "../context/Jobs.context";
 import { ManageJobForm } from "../components/ManageJobForm";
 
 function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
-  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [showDeleteJobModal, setShowDeleteJobModal] = useState(false);
   const [showJobModal, setShowJobModal] = useState(false);
 
   const { deleteJob, updateJob } = useContext(JobsContext);
@@ -35,7 +35,7 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
         <div className="my-0 md:px-20 px-4 py-10 bg-white rounded-lg overflow-y-auto relative">
           <div className="absolute top-4 right-4">
             <DropDown3Dots
-              setShowDeleteModal={setShowDeleteModal}
+              setShowDeleteJobModal={setShowDeleteJobModal}
               setShowJobModal={setShowJobModal}
             />
           </div>
@@ -120,9 +120,9 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
           <h2 className="text-center text-3xl">No Job Selected</h2>
         </>
       )}
-      {showDeleteModal && (
-        <DeleteModal
-          setShowDeleteModal={setShowDeleteModal}
+      {showDeleteJobModal && (
+        <DeleteJobModal
+          setShowDeleteJobModal={setShowDeleteJobModal}
           selectedJob={selectedJob}
           deleteJob={deleteJob}
           setSelectedJob={setSelectedJob}
