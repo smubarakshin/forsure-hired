@@ -20,11 +20,31 @@ function JobsAI() {
 
   const [chatGPTJSONResponse, setChatGPTJSONResponse] = useState(null);
 
-  // const [currentJob, setCurrentJob] = useState(null);
+  // States and values if user came from Jobs Page (/ai/:jobId)
+  const [currentJob, setCurrentJob] = useState(null);
+  const [descriptionFromJobPage, setDescriptionFromJobPage] = useState(null);
   const { getJob } = useContext(JobsContext);
   const { jobId } = useParams();
 
-  console.log("jobId = ", jobId);
+  const generateJobDescription = (job) => {
+    return `Title: ${job.title}\n
+Role Summary: ${job.description}\n
+Technologies: ${job.techs.join(", ")}`;
+  };
+
+  const getCurrentJob = async (id) => {
+    const job = await getJob(id);
+    setCurrentJob(job);
+    const description = generateJobDescription(job);
+    setJobDescription(description);
+    setDescriptionFromJobPage(description);
+  };
+
+  useEffect(() => {
+    if (jobId) {
+      getCurrentJob(jobId);
+    }
+  }, [jobId, getJob]);
 
   const handleChange = (e) => {
     setJobDescription(e.target.value);
@@ -116,6 +136,27 @@ function JobsAI() {
               onSubmit={handleSubmit}
             >
               <div className="flex gap-2 mb-8">
+                {descriptionFromJobPage && (
+                  <label
+                    className={`p-4 rounded cursor-pointer ${
+                      jobDescription === descriptionFromJobPage
+                        ? "bg-green-100 border border-1 border-green-600 text-green-700"
+                        : "bg-slate-200"
+                    }`}
+                    htmlFor="descriptionFromJobPage"
+                  >
+                    <input
+                      className="sr-only peer"
+                      onChange={handleChange}
+                      type="radio"
+                      name="jobDescription"
+                      id="descriptionFromJobPage"
+                      value={descriptionFromJobPage}
+                      checked={jobDescription === descriptionFromJobPage}
+                    />
+                    <span>Current Job</span>
+                  </label>
+                )}
                 <label
                   className={`p-4 rounded cursor-pointer ${
                     jobDescription === ""
