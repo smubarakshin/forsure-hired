@@ -31,7 +31,6 @@ function JobsPage() {
 
   useEffect(() => {
     setAssociatedCompany(getCompany(selectedJob.companyId));
-    console.log(selectedJob);
   }, [selectedJob]);
 
   useEffect(() => {

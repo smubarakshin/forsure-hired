@@ -31,7 +31,7 @@ export const ManageJobForm = ({
   // Validated the form (checks if all inputs are filled out)
   const isFormFilled = () => {
     for (let key in formData) {
-      if (formData[key] === "") {
+      if (!formData[key]) {
         return false;
       }
     }
@@ -133,7 +133,7 @@ export const ManageJobForm = ({
                       id="techs"
                       name="techs"
                       type="text"
-                      placeholder="Separates by spaces"
+                      placeholder="Separates by commas"
                     />
                   </div>
 
@@ -254,10 +254,10 @@ export const ManageJobForm = ({
                   <button
                     className="bg-[#775DA6] hover:bg-[#544274] text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 disabled:cursor-not-allowed disabled:hover:bg-[#775DA6]"
                     type="submit"
-                    // disabled={
-                    //   !isFormFilled() ||
-                    //   JSON.stringify(formData) === JSON.stringify(task)
-                    // }
+                    disabled={
+                      !isFormFilled() ||
+                      JSON.stringify(formData) === JSON.stringify(job)
+                    }
                   >
                     {formData.id ? "Save" : "Create"}
                   </button>
