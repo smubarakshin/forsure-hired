@@ -31,6 +31,7 @@ const JobsList = ({
           Add New
         </button>
       </div>
+      <div className="flex justify-between items-center"></div>
 
       <div className="flex flex-col gap-3 md:overflow-y-auto pb-2 ">
         {selectedCompany ? (
@@ -53,7 +54,11 @@ const JobsList = ({
               jobs.map((job) => (
                 <div
                   onClick={() => setSelectedJob(job)}
-                  className="cursor-pointer"
+                  className={`cursor-pointer mr-2 mx-2 rounded-lg ${
+                    selectedJob.id === job.id
+                      ? "border-4 border-solid border-slate-300 "
+                      : "border-none"
+                  }`}
                   key={job.id}
                 >
                   <JobCard job={job} key={job.id} />
