@@ -31,7 +31,7 @@ export const ManageJobForm = ({
   // Validated the form (checks if all inputs are filled out)
   const isFormFilled = () => {
     for (let key in formData) {
-      if (!formData[key]) {
+      if (formData[key] === "" || (key === "techs" && !formData[key].length)) {
         return false;
       }
     }
