@@ -2,11 +2,13 @@ import React from "react";
 import { useContext, useState, useEffect } from "react";
 import { CompaniesContext } from "../context/Companies.context";
 
+
 import arrowBack from "../images/arrow-back.svg";
 
 import CompaniesList from "../components/CompaniesList";
 import JobsList from "../components/JobsList";
 import CompanyAddModal from "../components/CompanyAddModal";
+import DeleteModal from "../components/DeleteModal";
 
 const emptyCompany = {
   logo: "",
@@ -21,18 +23,20 @@ const emptyCompany = {
 
 const HomePage = () => {
   const { companies, getAllCompanies } = useContext(CompaniesContext);
-  const [companiesCopy, setCompaniesCopy] = useState(companies);
+  
+  // const [companiesCopy, setCompaniesCopy] = useState(companies);
 
   const [selectedCompany, setSelectedCompany] = useState(emptyCompany);
   const [showModal, setShowModal] = useState(false);
 
   // console.log(companies);
-  useEffect(() => {
-    getAllCompanies();
-  }, [companiesCopy]);
+  // useEffect(() => {
+  //   getAllCompanies();
+  // }, [companiesCopy]);
 
   return (
     <main className="text-slate-700 md:mx-auto md:w-[80%] flex gap-2 md:h-[85vh] md:min-h-[85vh] overflow-hidden">
+      
       <CompaniesList
         selectedCompany={selectedCompany}
         setSelectedCompany={setSelectedCompany}

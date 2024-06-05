@@ -2,12 +2,15 @@ import { useState, useEffect, createContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { comma } from "postcss/lib/list";
 
 const CompaniesContext = createContext();
 const API_URL = "https://json-server-tpl.adaptable.app/companies/";
 
 function CompaniesProvider({ children }) {
   const [companies, setCompanies] = useState([]);
+
+
 
   const getAllCompanies = async () => {
     try {
@@ -36,7 +39,7 @@ function CompaniesProvider({ children }) {
     ev.preventDefault();
     try {
       const response = await axios.post(API_URL, companyData);
-      setCompanies([response.data, ...companies]);
+      // setCompanies([response.data, ...companies]);
       response.statusText === 201 &&
         toast.success("Company Added Successfull!", {
           position: "top-center",
@@ -50,6 +53,7 @@ function CompaniesProvider({ children }) {
     try {
       const response = await axios.delete(API_URL + companyId);
       setCompanies(getAllCompanies());
+
       response.status === 200 &&
         toast.error("Company Deleted!", {
           position: "top-center",
@@ -73,7 +77,7 @@ function CompaniesProvider({ children }) {
   };
   useEffect(() => {
     getAllCompanies();
-  }, []);
+  }, [companies]);
 
   return (
     <CompaniesContext.Provider

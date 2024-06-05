@@ -6,7 +6,7 @@ export const JobCard = ({ job }) => {
   const { companies } = useContext(CompaniesContext);
 
   const companyShortAddress = (job) => {
-    const company = companies.find((company) => company.id === job.companyId);
+    const company = companies.length && companies.find((company) => company.id === job.companyId);
     if (company) {
       return (
         company.name +
