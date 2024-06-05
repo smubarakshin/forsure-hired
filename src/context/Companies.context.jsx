@@ -66,6 +66,11 @@ function CompaniesProvider({ children }) {
     ev.preventDefault();
     try {
       const response = await axios.put(API_URL + companyId, companyData);
+      setCompanies((prevCompanies) =>
+        prevCompanies.map((company) =>
+          company.id === companyId ? companyData : company
+        )
+      );
       response.status === 200 &&
         toast.success("Company Updated Successfull!", {
           position: "top-center",
