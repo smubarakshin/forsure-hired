@@ -4,6 +4,8 @@ import axios from "axios";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { TypingIndicator } from "@chatscope/chat-ui-kit-react";
 
+import AnswerAccordion from "../components/AnswerAccordion";
+
 const apiKey = import.meta.env.VITE_REACT_API_KEY;
 
 function JobsAI() {
@@ -34,10 +36,10 @@ function JobsAI() {
       role: "system",
       content: `I have a job description pasted below. Based on this job description, generate a list of 10 interview questions that are relevant to the role, responsibilities, and qualifications mentioned. Make sure the questions cover both technical and behavioral aspects suitable for assessing the candidate's fit for the position.
 
-      I also want you to provide sample answers to each of the questions generated, simulating what a suitable candidate might say in response to each question.
+      I also want you to provide sample answers to each of the questions generated, simulating what a suitable candidate might say in response to each question. Ensure that the sample answers follow the STAR method (Situation, Task, Action, Result).
 
-      I want your response to be generated in the following JSON format:
-
+      I want your response to be generated in the following JSON format, without any additional text or formatting:
+    
       "response": {
            "behavioral": {
               "questions" : ["Behavioral Question 1", "Behavioral Question 2", ..., "Behavioral Question 5"],
@@ -149,7 +151,7 @@ function JobsAI() {
               </div>
 
               <textarea
-                className="w-full max-w-[700px] border border-2 border slate-200 rounded-md p-4 resize-none mb-12"
+                className="w-full max-w-[700px] border-2 slate-200 rounded-md p-4 resize-none mb-12"
                 name=""
                 id=""
                 rows={12}
@@ -204,14 +206,24 @@ function JobsAI() {
                 {chatGPTJSONResponse.response.behavioral.questions.map(
                   (question, index) => {
                     return (
-                      <div className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-200 rounded p-4">
+                      <div
+                        key={index}
+                        className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-200 rounded p-4"
+                      >
                         <h2 className="text-2xl font-semibold mb-4">
                           Question {index + 1}
                         </h2>
                         <p className="tracking-wide mb-4 text-lg">{question}</p>
-                        <p className="w-fit font-semibold cursor-pointer hover:text-green-600">
+                        {/* <p className="w-fit font-semibold cursor-pointer hover:text-green-600">
                           Show Answer
-                        </p>
+                        </p> */}
+                        <AnswerAccordion
+                          answer={
+                            chatGPTJSONResponse.response.behavioral.answers[
+                              index
+                            ]
+                          }
+                        />
                       </div>
                     );
                   }
@@ -222,14 +234,24 @@ function JobsAI() {
                 {chatGPTJSONResponse.response.technical.questions.map(
                   (question, index) => {
                     return (
-                      <div className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-200 rounded p-4">
+                      <div
+                        key={index}
+                        className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-200 rounded p-4"
+                      >
                         <h2 className="text-2xl font-semibold mb-4">
                           Question {index + 1}
                         </h2>
                         <p className="tracking-wide mb-4 text-lg">{question}</p>
-                        <p className="w-fit font-semibold cursor-pointer hover:text-green-600">
+                        {/* <p className="w-fit font-semibold cursor-pointer hover:text-green-600">
                           Show Answer
-                        </p>
+                        </p> */}
+                        <AnswerAccordion
+                          answer={
+                            chatGPTJSONResponse.response.technical.answers[
+                              index
+                            ]
+                          }
+                        />
                       </div>
                     );
                   }
