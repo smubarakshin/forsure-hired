@@ -21,7 +21,7 @@ function JobsAI() {
   const [chatGPTJSONResponse, setChatGPTJSONResponse] = useState(null);
 
   // const [currentJob, setCurrentJob] = useState(null);
-  // const { getJob } = useContext(JobsContext);
+  const { getJob } = useContext(JobsContext);
   const { jobId } = useParams();
 
   console.log("jobId = ", jobId);

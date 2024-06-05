@@ -30,6 +30,7 @@ function JobsProvider({ children }) {
   const addJob = async (jobData) => {
     try {
       const response = await axios.post(API_URL, jobData);
+      setJobs([response.data, ...jobs]);
       response.status === 201 &&
         toast.success("Job Added Successfull!", {
           position: "top-center",
@@ -42,6 +43,7 @@ function JobsProvider({ children }) {
   const deleteJob = async (jobId) => {
     try {
       const response = await axios.delete(API_URL + jobId);
+      setJobs((prevJobs) => prevJobs.filter((job) => job.id !== jobId));
       response.status === 200 &&
         toast.error("Job Deleted!", {
           position: "top-center",
@@ -65,7 +67,7 @@ function JobsProvider({ children }) {
 
   useEffect(() => {
     getAllJobs();
-  }, [jobs]);
+  }, []);
 
   return (
     <JobsContext.Provider
