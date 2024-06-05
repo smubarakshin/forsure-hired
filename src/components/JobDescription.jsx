@@ -37,6 +37,7 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
             <DropDown3Dots
               setShowDeleteJobModal={setShowDeleteJobModal}
               setShowJobModal={setShowJobModal}
+              selectedJob={selectedJob}
             />
           </div>
 

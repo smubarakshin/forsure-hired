@@ -10,8 +10,6 @@ const API_URL = "https://json-server-tpl.adaptable.app/companies/";
 function CompaniesProvider({ children }) {
   const [companies, setCompanies] = useState([]);
 
-
-
   const getAllCompanies = async () => {
     try {
       const response = await axios.get(API_URL);
@@ -39,7 +37,7 @@ function CompaniesProvider({ children }) {
     ev.preventDefault();
     try {
       const response = await axios.post(API_URL, companyData);
-      // setCompanies([response.data, ...companies]);
+      setCompanies([response.data, ...companies]);
       response.statusText === 201 &&
         toast.success("Company Added Successfull!", {
           position: "top-center",
@@ -52,8 +50,9 @@ function CompaniesProvider({ children }) {
   const deleteCompany = async (companyId) => {
     try {
       const response = await axios.delete(API_URL + companyId);
-      setCompanies(getAllCompanies());
-
+      setCompanies((prevCompanies) =>
+        prevCompanies.filter((comp) => comp.id !== companyId)
+      );
       response.status === 200 &&
         toast.error("Company Deleted!", {
           position: "top-center",
@@ -77,7 +76,7 @@ function CompaniesProvider({ children }) {
   };
   useEffect(() => {
     getAllCompanies();
-  }, [companies]);
+  }, []);
 
   return (
     <CompaniesContext.Provider

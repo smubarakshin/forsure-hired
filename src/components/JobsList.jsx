@@ -12,6 +12,7 @@ const JobsList = ({
 }) => {
   const { jobs } = useContext(JobsContext);
 
+  console.log("JOBS LIST");
   return (
     <div
       className={`${

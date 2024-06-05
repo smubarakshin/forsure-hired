@@ -10,11 +10,19 @@ import saveIcon from "../images/save1Icon.svg";
 import deleteIcon from "../images/deleteIcon.svg";
 import editIcon from "../images/editIcon.svg";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRobot } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example({ setShowDeleteJobModal, setShowJobModal }) {
+export default function Example({
+  setShowDeleteJobModal,
+  setShowJobModal,
+  selectedJob,
+}) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -35,15 +43,16 @@ export default function Example({ setShowDeleteJobModal, setShowJobModal }) {
           <div className="py-1">
             <MenuItem>
               {({ focus }) => (
-                <a
+                <Link
+                  to={`/ai/${selectedJob.id}`}
                   className={classNames(
                     focus ? "bg-gray-100 text-gray-900" : "text-gray-700",
                     "flex items-center gap-1 px-4 py-2 text-sm -ml-1 cursor-pointer "
                   )}
                 >
-                  <img src={saveIcon} alt="save icon" />
-                  Save Job
-                </a>
+                  <FontAwesomeIcon className="h-5" icon={faRobot} />
+                  AI Tool
+                </Link>
               )}
             </MenuItem>
             <MenuItem>
