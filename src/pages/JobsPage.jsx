@@ -7,6 +7,7 @@ import JobsList from "../components/JobsList";
 import JobDescription from "../components/JobDescription";
 import { useParams } from "react-router-dom";
 import { JobsContext } from "../context/Jobs.context";
+import { ManageJobForm } from "../components/ManageJobForm";
 
 const emptyJob = {
   title: "",
@@ -20,8 +21,9 @@ const emptyJob = {
 
 function JobsPage() {
   const { getCompany } = useContext(CompaniesContext);
-  const { getJob } = useContext(JobsContext);
+  const { getJob, addJob } = useContext(JobsContext);
   const { jobId } = useParams();
+  const [showJobModal, setShowJobModal] = useState(false);
 
   const [selectedJob, setSelectedJob] = useState(emptyJob);
 
@@ -29,6 +31,7 @@ function JobsPage() {
 
   useEffect(() => {
     setAssociatedCompany(getCompany(selectedJob.companyId));
+    console.log(selectedJob);
   }, [selectedJob]);
 
   useEffect(() => {
@@ -47,6 +50,7 @@ function JobsPage() {
       <JobsList
         setSelectedJob={setSelectedJob}
         selectedJob={selectedJob}
+        setShowJobModal={setShowJobModal}
         width="40"
       />
       {selectedJob.id && (
@@ -60,7 +64,15 @@ function JobsPage() {
       <JobDescription
         selectedJob={selectedJob}
         associatedCompany={associatedCompany}
+        setSelectedJob={setSelectedJob}
       />
+      {showJobModal && (
+        <ManageJobForm
+          closeModal={setShowJobModal}
+          job={emptyJob}
+          addJob={addJob}
+        />
+      )}
     </main>
   );
 }

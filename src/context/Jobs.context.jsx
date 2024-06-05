@@ -63,7 +63,7 @@ function JobsProvider({ children }) {
 
   useEffect(() => {
     getAllJobs();
-  }, []);
+  }, [jobs]);
 
   return (
     <JobsContext.Provider
