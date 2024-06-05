@@ -7,7 +7,6 @@ import { FadeLoader } from "react-spinners";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-
 import DeleteModal from "./DeleteModal";
 
 const emptyCompany = {
@@ -26,25 +25,24 @@ const CompaniesList = ({
   setSelectedCompany,
   setShowModal,
 }) => {
- 
   const { companies, deleteCompany } = useContext(CompaniesContext);
-  const { jobs, deleteJob } = useContext(JobsContext)
+  const { jobs, deleteJob } = useContext(JobsContext);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [companyToDeleteId, setCompanyToDeleteId] = useState(null)
-  
+  const [companyToDeleteId, setCompanyToDeleteId] = useState(null);
+
   const handleTrashIconClick = (companyId) => {
     setShowDeleteModal(true);
-    setCompanyToDeleteId(companyId)
+    setCompanyToDeleteId(companyId);
   };
 
   const handleDeleteCompany = () => {
-    jobs.forEach(job => {
-      job.companyId === companyToDeleteId && deleteJob(job.id)
-    })
-    deleteCompany(companyToDeleteId)
-    setShowDeleteModal(false)
-  }
+    jobs.forEach((job) => {
+      job.companyId === companyToDeleteId && deleteJob(job.id);
+    });
+    deleteCompany(companyToDeleteId);
+    setShowDeleteModal(false);
+  };
 
   return (
     <div
@@ -52,7 +50,12 @@ const CompaniesList = ({
         selectedCompany.id ? "hidden" : "flex"
       } md:flex flex-col gap-2 md:mr-20 md:border-r-2 md:border-solid md:w-[35vw] w-full  `}
     >
-      {showDeleteModal && <DeleteModal handleDeleteCompany={handleDeleteCompany} />}
+      {showDeleteModal && (
+        <DeleteModal
+          setShowDeleteModal={setShowDeleteModal}
+          handleDeleteCompany={handleDeleteCompany}
+        />
+      )}
       <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3 py-2">
         <h1
           className="text-center text-4xl  py-2 font-semibold cursor-pointer"
@@ -79,9 +82,7 @@ const CompaniesList = ({
                 <CompanyCard company={company} />
               </div>
               {/* TRASH ICON BELOW */}
-              
-              
-              
+
               <FontAwesomeIcon
                 className="absolute top-3 right-8 text-xs text-slate-300 cursor-pointer hover:text-red-500 hover:scale-125"
                 icon={faTrash}
