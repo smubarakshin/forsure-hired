@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { softwareEngineerJobDescription } from "../defaultJobDescriptions";
 import axios from "axios";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { TypingIndicator } from "@chatscope/chat-ui-kit-react";
+import { useParams } from "react-router-dom";
+
+import { JobsContext } from "../context/Jobs.context";
 
 import AnswerAccordion from "../components/AnswerAccordion";
 
@@ -16,6 +19,12 @@ function JobsAI() {
   const [questionType, setQuestionType] = useState("behavioral");
 
   const [chatGPTJSONResponse, setChatGPTJSONResponse] = useState(null);
+
+  // const [currentJob, setCurrentJob] = useState(null);
+  // const { getJob } = useContext(JobsContext);
+  const { jobId } = useParams();
+
+  console.log("jobId = ", jobId);
 
   const handleChange = (e) => {
     setJobDescription(e.target.value);
@@ -86,7 +95,6 @@ function JobsAI() {
   };
 
   useEffect(() => {
-    console.log("ChatGPT Response -----> ", chatGPTResponse);
     try {
       let parseResponse = JSON.parse(chatGPTResponse);
       setChatGPTJSONResponse(parseResponse);
@@ -94,8 +102,6 @@ function JobsAI() {
       console.log(error);
     }
   }, [chatGPTResponse]);
-
-  console.log("ChatGPT JSON Response ----->", chatGPTJSONResponse);
 
   return (
     <>

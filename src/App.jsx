@@ -9,9 +9,7 @@ import HomePage from "./pages/HomePage";
 
 import JobsPage from "./pages/JobsPage";
 
-
 import JobsAI from "./pages/JobsAI";
-
 
 function App() {
   return (
@@ -24,7 +22,7 @@ function App() {
         <Route path="/jobs/:jobId" element={<JobsPage />} />
 
         <Route path="/ai" element={<JobsAI />} />
-
+        <Route path="/ai/:jobId" element={<JobsAI />} />
       </Routes>
 
       <ToastContainer autoClose={2000} />
