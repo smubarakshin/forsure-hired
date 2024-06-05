@@ -151,7 +151,7 @@ function JobsAI() {
               </div>
 
               <textarea
-                className="w-full max-w-[700px] border border-2 border slate-200 rounded-md p-4 resize-none mb-12"
+                className="w-full max-w-[700px] border-2 slate-200 rounded-md p-4 resize-none mb-12"
                 name=""
                 id=""
                 rows={12}
@@ -206,7 +206,10 @@ function JobsAI() {
                 {chatGPTJSONResponse.response.behavioral.questions.map(
                   (question, index) => {
                     return (
-                      <div className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-200 rounded p-4">
+                      <div
+                        key={index}
+                        className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-200 rounded p-4"
+                      >
                         <h2 className="text-2xl font-semibold mb-4">
                           Question {index + 1}
                         </h2>
@@ -231,7 +234,10 @@ function JobsAI() {
                 {chatGPTJSONResponse.response.technical.questions.map(
                   (question, index) => {
                     return (
-                      <div className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-200 rounded p-4">
+                      <div
+                        key={index}
+                        className="w-[90%] lg:w-full max-w-[700px] mb-10 bg-slate-200 rounded p-4"
+                      >
                         <h2 className="text-2xl font-semibold mb-4">
                           Question {index + 1}
                         </h2>
