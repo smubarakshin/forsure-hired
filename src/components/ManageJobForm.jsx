@@ -153,6 +153,9 @@ export const ManageJobForm = ({
                           id="remote"
                           name="remote"
                         >
+                          <option value="" disabled>
+                            Location
+                          </option>
                           <option value="Remote">Remote</option>
                           <option value="Hybrid">Hybrid</option>
                           <option value="On Site">On Site</option>
@@ -200,11 +203,14 @@ export const ManageJobForm = ({
                     <div className="relative">
                       <select
                         onChange={handleFormChange}
-                        defaultValue={formData.companyId}
+                        value={formData.companyId}
                         className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                         id="companyId"
                         name="companyId"
                       >
+                        <option value="" disabled>
+                          Select Company
+                        </option>
                         {companies.map((comp) => (
                           <option key={comp.id} value={comp.id}>
                             {comp.name}

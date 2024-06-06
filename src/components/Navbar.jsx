@@ -20,7 +20,12 @@ export const Navbar = () => {
           <NavLink onClick={() => setIsOpen(false)} to="/">
             <img src={logo} alt="logo img" className="h-16" />
           </NavLink>
-          <h1 className="text-3xl font-bold text-slate-700">forSure Hired</h1>
+          <div className="flex flex-col items-center">
+            <h1 className="text-3xl font-bold text-slate-700">forSure Hired</h1>
+            <span className="text-sm text-slate-400 tracking-widest">
+              The Ultimate Job Tracker
+            </span>
+          </div>
         </div>
         <div className="hidden md:flex flex-col md:flex-row gap-6 text-lg text-slate-600">
           <NavLinks />
