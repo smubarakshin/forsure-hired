@@ -88,9 +88,9 @@ const JobsList = ({
         (selectedJob && selectedJob.id)
           ? "hidden"
           : "flex"
-      } md:flex flex-col md:w-[${width}vw] w-full`}
+      } md:flex flex-col md:w-[${width}vw] w-full gap-4`}
     >
-      <div className=" inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 w-full mb-6 py-2">
+      <div className=" inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 w-full mb-2 py-2">
         <h1 className="text-center text-4xl  py-2 font-semibold  ">Jobs</h1>
         <button
           className="bg-green-600 px-2 rounded-xl text-white font-semibold my-2 hover:scale-105 hover:opacity-70"
