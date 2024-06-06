@@ -23,7 +23,7 @@ function CompanyDropDown3Dots({
   return (
     <Menu
       as="div"
-      className="absolute top-4 right-12 md:right-6 lg:right-8  inline-block text-left"
+      className="absolute top-4 right-8 sm:right-10 md:right-6 lg:right-10  inline-block text-left"
     >
       <div>
         <MenuButton className="inline-flex w-full justify-center p-1 gap-x-1.5 rounded-md bg-transparent text-sm font-semibold text-gray-900 hover:shadow-sm hover:ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
@@ -51,7 +51,7 @@ function CompanyDropDown3Dots({
                   )}
                 >
                   <img src={editIcon} alt="save icon" className="h-5" />
-                  Edit Job
+                  Edit Company
                 </a>
               )}
             </MenuItem>

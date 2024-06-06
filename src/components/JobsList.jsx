@@ -88,7 +88,7 @@ const JobsList = ({
         (selectedJob && selectedJob.id)
           ? "hidden"
           : "flex"
-      } md:flex flex-col md:w-[${width}vw] w-full gap-4`}
+      } md:flex flex-col md:w-[${width}vw] w-full gap-4 mb-6`}
     >
       <div className=" inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 w-full mb-2 py-2">
         <h1 className="text-center text-4xl  py-2 font-semibold  ">Jobs</h1>
@@ -168,12 +168,12 @@ const JobsList = ({
                   onClick={() => setSelectedJob(job)}
                   className={`cursor-pointer mr-2 mx-2 rounded-lg ${
                     selectedJob && selectedJob.id === job.id
-                      ? "border-4 border-solid border-slate-300 "
-                      : "border-none"
+                      ? "shadow-md"
+                      : "shadow-md hover:shadow-none hover:translate-y-[2px]"
                   }`}
                   key={job.id}
                 >
-                  <JobCard job={job} key={job.id} />
+                  <JobCard job={job} selectedJob={selectedJob} key={job.id} />
                 </div>
               ))
             ) : (

@@ -14,18 +14,22 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="flex flex-wrap justify-between items-center px-[5%] bg-white shadow-lg">
-      <div className="flex flex-row items-center justify-between w-[100%]">
-        <div className="inline-flex gap-2 items-center">
+    <div className="flex flex-wrap justify-between items-center bg-white shadow-lg px-[5%] md:px-0 mb-6">
+      <div className="flex flex-row items-center justify-between w-[100%] mx-auto md:w-[80%]">
+        <div className="inline-flex gap-2 items-center ">
           <NavLink onClick={() => setIsOpen(false)} to="/">
             <img src={logo} alt="logo img" className="h-16" />
           </NavLink>
-          <div className="flex flex-col items-center">
+          <NavLink
+            onClick={() => setIsOpen(false)}
+            to="/"
+            className="flex flex-col items-center"
+          >
             <h1 className="text-3xl font-bold text-slate-700">forSure Hired</h1>
             <span className="text-sm text-slate-400 tracking-widest">
               The Ultimate Job Tracker
             </span>
-          </div>
+          </NavLink>
         </div>
         <div className="hidden md:flex flex-col md:flex-row gap-6 text-lg text-slate-600">
           <NavLinks />
