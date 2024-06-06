@@ -79,6 +79,7 @@ const JobsList = ({
       setSortedJobs(searchedJobs);
       //   sortJobs();
     }
+    sortJobs();
   }, [searching]);
 
   return (
