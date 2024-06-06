@@ -215,7 +215,7 @@ Technologies: ${job.techs.join(", ")}`;
                     checked={jobDescription === softwareEngineerJobDescription}
                     disabled={typing ? true : false}
                   />
-                  <span>Software Engineer</span>
+                  <span>Example Description</span>
                 </label>
               </div>
 
@@ -224,7 +224,7 @@ Technologies: ${job.techs.join(", ")}`;
                 name=""
                 id=""
                 rows={12}
-                placeholder="Select a job role to view an example or paste your own description here"
+                placeholder="Select a Example Description to view a template or paste your own description here"
                 value={jobDescription}
                 onChange={handleChange}
                 required={true}
