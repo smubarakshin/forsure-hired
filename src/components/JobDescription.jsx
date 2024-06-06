@@ -12,6 +12,7 @@ import { ManageJobForm } from "../components/ManageJobForm";
 function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
   const [showDeleteJobModal, setShowDeleteJobModal] = useState(false);
   const [showJobModal, setShowJobModal] = useState(false);
+  const [showMore, setShowMore] = useState(false);
 
   const { deleteJob, updateJob } = useContext(JobsContext);
   const formatDateToAgo = (date) => {
@@ -100,7 +101,20 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
               <h3 className="text-lg font-semibold mb-2">
                 {associatedCompany.name}
               </h3>
-              <p className="mb-1">{selectedJob.description}</p>
+              <pre
+                className={`${
+                  showMore ? "whitespace-pre-wrap" : "truncate"
+                } text-slate-700 font-sans mb-1`}
+              >
+                {selectedJob.description}
+              </pre>
+
+              <p
+                onClick={() => setShowMore(!showMore)}
+                className="font-semibold underline cursor-pointer"
+              >
+                Show {showMore ? "less" : "more"}
+              </p>
             </div>
 
             <div>
