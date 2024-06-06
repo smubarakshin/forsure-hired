@@ -1,20 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { CompaniesContext } from "../context/Companies.context";
 
-function CompanyAddModal({ setShowModal }) {
-  const [company, setCompany] = useState({
-    logo: "",
-    name: "",
-    address: {
-      street: "",
-      city: "",
-      state: "",
-    },
-    rating: 0,
-  });
-
-  const { addCompany, getAllCompanies, setCompanies, companies } =
-    useContext(CompaniesContext);
+function CompanyAddModal({
+  setShowModal = null,
+  setEditCompanyModal = null,
+  company,
+}) {
+  const { addCompany, updateCompany } = useContext(CompaniesContext);
 
   const [formData, setFormData] = useState({ ...company });
 
@@ -42,8 +34,14 @@ function CompanyAddModal({ setShowModal }) {
   };
 
   const handleSubmit = (e) => {
-    addCompany(e, formData);
-    setShowModal(false);
+    formData.id
+      ? updateCompany(e, formData, formData.id)
+      : addCompany(e, formData);
+    closeModals();
+  };
+
+  const closeModals = () => {
+    setEditCompanyModal ? setEditCompanyModal(false) : setShowModal(false);
   };
 
   return (
@@ -55,11 +53,11 @@ function CompanyAddModal({ setShowModal }) {
             {/*header*/}
             <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
               <h3 className="text-3xl text-gray-700 font-semibold">
-                {formData.id ? "Task Details" : "Create Task"}
+                {formData.id ? "Company Details" : "Create Company"}
               </h3>
               <button
                 className="p-1 ml-auto bg-transparent border-0 text-black float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                onClick={() => setShowModal(false)}
+                onClick={closeModals}
               >
                 <span className="bg-transparent text-red-500  h-6 w-6 text-2xl block outline-none focus:outline-none hover:scale-125">
                   ×
@@ -87,7 +85,7 @@ function CompanyAddModal({ setShowModal }) {
                       name="logo"
                       type="url"
                       placeholder="Logo"
-                      required
+                      required={true}
                     />
                   </div>
                 </div>
@@ -109,7 +107,7 @@ function CompanyAddModal({ setShowModal }) {
                       name="name"
                       type="text"
                       placeholder="Company"
-                      required
+                      required={true}
                     />
                   </div>
                 </div>
@@ -143,7 +141,7 @@ function CompanyAddModal({ setShowModal }) {
                       name="address.street"
                       type="text"
                       placeholder="Street"
-                      required
+                      required={true}
                     />
                   </div>
 
@@ -163,7 +161,7 @@ function CompanyAddModal({ setShowModal }) {
                       name="address.city"
                       type="text"
                       placeholder="City"
-                      required
+                      required={true}
                     />
                   </div>
 
@@ -177,13 +175,13 @@ function CompanyAddModal({ setShowModal }) {
                     </label>
                     <input
                       onChange={handleFormChange}
-                      value={formData.state}
+                      value={formData.address.state}
                       className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="state"
                       name="address.state"
                       type="text"
                       placeholder="State"
-                      required
+                      required={true}
                     />
                   </div>
                 </div>
@@ -205,7 +203,7 @@ function CompanyAddModal({ setShowModal }) {
                       name="rating"
                       type="text"
                       placeholder="Rating"
-                      required
+                      required={true}
                     />
                   </div>
                 </div>
@@ -214,20 +212,18 @@ function CompanyAddModal({ setShowModal }) {
                   <button
                     className="text-slate-600 bg-gray-300 hover:bg-gray-400 font-bold uppercase px-6 py-3 text-sm outline-none rounded focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 "
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={closeModals}
                   >
                     Cancel
                   </button>
                   <button
                     className="bg-[#775DA6] hover:bg-[#544274] text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 disabled:cursor-not-allowed disabled:hover:bg-[#775DA6]"
                     type="submit"
-                    // disabled={
-                    //   !isFormFilled() ||
-                    //   JSON.stringify(formData) === JSON.stringify(company)
-                    // }
-                    onClick={handleSubmit}
+                    disabled={
+                      JSON.stringify(formData) === JSON.stringify(company)
+                    }
                   >
-                    {formData.id ? "Cancel" : "Create"}
+                    {formData.id ? "Save" : "Create"}
                   </button>
                 </div>
               </form>

@@ -66,7 +66,10 @@ const HomePage = () => {
         setSelectedCompany={setSelectedCompany}
         setShowJobModal={setShowJobModal}
       />
-      {showModal && <CompanyAddModal setShowModal={setShowModal} />}
+      {showModal && (
+        <CompanyAddModal setShowModal={setShowModal} company={emptyCompany} />
+      )}
+
       {/* </div> */}
       {showJobModal && (
         <ManageJobForm

@@ -37,8 +37,11 @@ function DeleteModal({ setShowDeleteModal, handleDeleteCompany }) {
               />
             </svg>
             <h4 className="text-xl font-bold text-gray-700 mt-6">
-              Are you sure you want to delete this task?
+              Are you sure you want to delete this company?
             </h4>
+            <p className="text-sm text-gray-500 mt-4">
+              All existing jobs for this company will also be deleted
+            </p>
             <p className="text-sm text-gray-500 mt-4">
               This action cannot be undone
             </p>
