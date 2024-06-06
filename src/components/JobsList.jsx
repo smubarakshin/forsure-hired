@@ -118,9 +118,7 @@ const JobsList = ({
             id="sorting"
             name="sorting"
           >
-            <option value="" disabled>
-              Sorting By
-            </option>
+            <option value="">All Jobs</option>
             <option value="Newest">Newest</option>
             <option value="Oldest">Oldest</option>
             <option value="Payment(High-Low)">Payment(High-Low)</option>
