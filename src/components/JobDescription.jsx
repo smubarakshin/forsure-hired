@@ -23,7 +23,7 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
   return (
     <div
       className={`${
-        !selectedJob.id ? "hidden" : "flex"
+        !selectedJob ? "hidden" : "flex"
       } md:flex flex-col gap-4 min-w-[50vw] px-2 w-full mb-2`}
     >
       <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3 py-2">

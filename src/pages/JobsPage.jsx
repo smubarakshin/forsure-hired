@@ -30,7 +30,7 @@ function JobsPage() {
   const [associatedCompany, setAssociatedCompany] = useState(null);
 
   useEffect(() => {
-    setAssociatedCompany(getCompany(selectedJob.companyId));
+    selectedJob && setAssociatedCompany(getCompany(selectedJob.companyId));
   }, [selectedJob]);
 
   useEffect(() => {
@@ -52,7 +52,7 @@ function JobsPage() {
         setShowJobModal={setShowJobModal}
         width="40"
       />
-      {selectedJob.id && (
+      {selectedJob && selectedJob.id && (
         <img
           src={arrowBack}
           alt="arrow back"
@@ -60,11 +60,13 @@ function JobsPage() {
           onClick={() => setSelectedJob(emptyJob)}
         />
       )}
-      <JobDescription
-        selectedJob={selectedJob}
-        associatedCompany={associatedCompany}
-        setSelectedJob={setSelectedJob}
-      />
+      {
+        <JobDescription
+          selectedJob={selectedJob}
+          associatedCompany={associatedCompany}
+          setSelectedJob={setSelectedJob}
+        />
+      }
       {showJobModal && (
         <ManageJobForm
           closeModal={setShowJobModal}
