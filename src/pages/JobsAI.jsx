@@ -31,7 +31,7 @@ function JobsAI() {
 
   const generateJobDescription = (job) => {
     return `Title: ${job.title}\n
-Role Summary: ${job.description}\n
+${job.description}\n
 Technologies: ${job.techs.join(", ")}`;
   };
 
@@ -128,22 +128,12 @@ Technologies: ${job.techs.join(", ")}`;
 
   return (
     <>
-      <div className="mt-16 flex flex-col items-center text-slate-700">
+      <div className="mt-6 sm:mt-12 md:mt-16 flex flex-col items-center text-slate-700">
         {!chatGPTJSONResponse ? (
           <>
-            <div className="relative flex flex-wrap w-full justify-center max-w-[800px] mb-8">
-              {jobId && (
-                <img
-                  src={arrowBack}
-                  alt="arrow back"
-                  className="pl-[5%] absolute left-0 h-10 z-20 cursor-pointer"
-                  onClick={() => navigate(-1)}
-                />
-              )}
-              <h1 className="text-4xl text-center font-semibold relative  w-[300px] md:w-full ">
-                Provide a Job Description
-              </h1>
-            </div>
+            <h1 className="w-full text-3xl sm:text-4xl text-center font-semibold relative px-4 mb-6">
+              Provide a Job Description
+            </h1>
             <form
               className="flex flex-col items-center w-[90%] md:w-full max-w-[700px]"
               onSubmit={handleSubmit}
