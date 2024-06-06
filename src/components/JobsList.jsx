@@ -75,10 +75,7 @@ const JobsList = ({
     const searchedJobs = jobs.filter((job) =>
       job.title.toLowerCase().includes(searching.toLowerCase())
     );
-    if (searching) {
-      setSortedJobs(searchedJobs);
-      //   sortJobs();
-    }
+    setSortedJobs(searchedJobs);
     if (sorting) {
       sortJobs();
     }
@@ -106,14 +103,8 @@ const JobsList = ({
 
       {/* filtering & sorting  */}
 
-      <div className="flex justify-between items-center px-4 gap-2">
+      <div className="flex flex-wrap justify-between items-center px-4 gap-2">
         <div className="relative flex items-center gap-2">
-          <label
-            className="block  tracking-wide text-gray-700  font-bold "
-            htmlFor="sorting"
-          >
-            Sort:
-          </label>
           <select
             onChange={(e) => setSorting(e.target.value)}
             defaultValue={sorting}
@@ -140,7 +131,7 @@ const JobsList = ({
         <input
           onChange={(e) => setSearching(e.target.value)}
           value={searching}
-          className="appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-1 px-2  leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          className="appearance-none block bg-gray-200 text-gray-700 border border-gray-200 rounded py-1 px-2 w-[180px] leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
           id="search"
           name="search"
           type="text"
@@ -148,7 +139,7 @@ const JobsList = ({
         />
       </div>
 
-      <div className="flex flex-col gap-2 md:overflow-y-auto pb-2 ">
+      <div className="flex flex-col gap-2 md:overflow-y-auto pb-2 mx-2 ">
         {selectedCompany ? (
           <>
             {sortedJobs ? (
