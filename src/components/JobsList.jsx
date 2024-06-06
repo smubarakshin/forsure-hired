@@ -79,7 +79,9 @@ const JobsList = ({
       setSortedJobs(searchedJobs);
       //   sortJobs();
     }
-    sortJobs();
+    if (sorting) {
+      sortJobs();
+    }
   }, [searching]);
 
   return (
