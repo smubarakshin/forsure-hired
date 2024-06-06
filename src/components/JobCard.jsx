@@ -27,7 +27,6 @@ export const JobCard = ({ job, selectedJob }) => {
     let now = Date.now();
     return Math.floor((now - currDate) / 86400000);
   };
-  console.log(job);
 
   return (
     <Link to={`/jobs/${job.id}`}>

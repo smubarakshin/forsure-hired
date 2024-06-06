@@ -19,7 +19,7 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
     let now = Date.now();
     return Math.floor((now - currDate) / 86400000);
   };
-  console.log(selectedJob);
+
   return (
     <div
       className={`${
