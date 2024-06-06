@@ -217,7 +217,7 @@ function CompanyAddModal({
                     Cancel
                   </button>
                   <button
-                    className="bg-[#775DA6] hover:bg-[#544274] text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 disabled:cursor-not-allowed disabled:hover:bg-[#775DA6]"
+                    className="bg-green-600 hover:opacity-70 text-white font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 disabled:cursor-not-allowed disabled:hover:bg-green-600"
                     type="submit"
                     disabled={
                       JSON.stringify(formData) === JSON.stringify(company)

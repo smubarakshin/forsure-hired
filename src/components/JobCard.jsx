@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { CompaniesContext } from "../context/Companies.context";
 import { Link } from "react-router-dom";
 
-export const JobCard = ({ job }) => {
+export const JobCard = ({ job, selectedJob }) => {
   const { companies } = useContext(CompaniesContext);
 
   const companyShortAddress = (job) => {
@@ -27,10 +27,15 @@ export const JobCard = ({ job }) => {
     let now = Date.now();
     return Math.floor((now - currDate) / 86400000);
   };
+  console.log(job);
 
   return (
     <Link to={`/jobs/${job.id}`}>
-      <div className="flex justify-between px-2 shadow-md rounded-lg bg-white cursor-pointer hover:shadow-none hover:translate-y-[2px] transition-all ">
+      <div
+        className={`flex justify-between px-2 rounded-lg bg-white cursor-pointer transition-all ${
+          !selectedJob && "shadow-md hover:shadow-none hover:translate-y-[2px]"
+        } ${selectedJob && job.id === selectedJob.id && "bg-green-200"}`}
+      >
         <div className="flex flex-col gap-2 p-4 ">
           <h1 className="text-2xl font-semibold">{job.title}</h1>
           <p className="text-slate-400">{companyShortAddress(job)}</p>
@@ -45,7 +50,7 @@ export const JobCard = ({ job }) => {
             ))}
           </p>
         </div>
-        <div className="flex flex-col gap-2 py-2 justify-center items-end">
+        <div className="flex flex-col gap-2 py-2 px-4 justify-center items-end">
           <h1 className="text-xl whitespace-nowrap">{job.salaryRange}</h1>
           <p className="bg-blue-600 text-white px-2 rounded-3xl">
             {job.remote}

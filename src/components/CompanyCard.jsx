@@ -10,7 +10,7 @@ const CompanyCard = ({ company }) => {
         className="h-20 rounded-lg shadow-md"
       />
       <div className="flex flex-col  justify-center gap-1 ">
-        <h1 className="text-slate-700 text-2xl font-semibold">
+        <h1 className="text-slate-700 text-2xl font-semibold w-[85%] sm:w-full">
           {company.name}
         </h1>
         <p className="text-slate-400 inline-flex gap-2 text-sm">

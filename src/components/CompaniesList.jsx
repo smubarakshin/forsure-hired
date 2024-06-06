@@ -61,7 +61,7 @@ const CompaniesList = ({
       <div
         className={`${
           selectedCompany.id ? "hidden" : "flex"
-        } md:flex flex-col md:mr-20 md:border-r-2 md:border-solid md:w-[35vw] w-full  `}
+        } px-[5%] md:px-0 md:flex flex-col md:mr-20 md:border-r-2 md:border-solid md:w-[35vw] w-full mb-6 `}
       >
         {showDeleteModal && (
           <DeleteModal

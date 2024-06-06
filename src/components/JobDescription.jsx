@@ -32,87 +32,93 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
         </h1>
       </div>
       {selectedJob && associatedCompany ? (
-        <div className="my-0 md:px-20 px-4 py-10 bg-white rounded-lg overflow-y-auto relative">
-          <div className="absolute top-4 right-4">
-            <DropDown3Dots
-              setShowDeleteJobModal={setShowDeleteJobModal}
-              setShowJobModal={setShowJobModal}
-              selectedJob={selectedJob}
-            />
-          </div>
-
-          <div className="flex items-center gap-4 mb-4">
-            <img
-              className="w-16 rounded-md object-cover"
-              src={associatedCompany.logo}
-              alt="company logo"
-            />
-            <div>
-              <p className="text-xl font-semibold">{associatedCompany.name}</p>
+        <div className="my-0 md:px-20 px-10 py-10 bg-white rounded-lg overflow-y-auto relative">
+          <div className="lg:w-[75%] lg:mx-auto">
+            <div className="absolute top-4 right-4">
+              <DropDown3Dots
+                setShowDeleteJobModal={setShowDeleteJobModal}
+                setShowJobModal={setShowJobModal}
+                selectedJob={selectedJob}
+              />
             </div>
-          </div>
 
-          <div className="border-b-2 border-slate-300 pb-4 mb-4">
-            <h2 className="text-3xl font-bold tracking-wide mb-4">
-              {selectedJob.title}
-            </h2>
-            <p>Applied {formatDateToAgo(selectedJob.creationDate)} days ago</p>
-          </div>
-
-          <div className="border-b-2 border-slate-300 pb-4 mb-4">
-            <h3 className="font-semibold text-2xl mb-6">Details</h3>
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-8">
-                <FontAwesomeIcon
-                  className="text-2xl"
-                  icon={faMoneyCheckDollar}
-                />
-              </div>
-              <p className="font-semibold">{selectedJob.salaryRange}/yr</p>
-            </div>
-            <div className="flex items-center gap-4 mb-2">
-              <div className="w-8">
-                <FontAwesomeIcon className="text-2xl" icon={faLocationDot} />
-              </div>
+              <img
+                className="w-16 rounded-md object-cover"
+                src={associatedCompany.logo}
+                alt="company logo"
+              />
               <div>
-                <p className="font-semibold">
-                  {selectedJob.remote}
-                  {selectedJob.remote !== "Remote" &&
-                    `, based in ${associatedCompany.address.city}, ${associatedCompany.address.state}`}
-                </p>
-                <p>
-                  {selectedJob.remote === "Remote"
-                    ? "Work from home"
-                    : selectedJob.remote === "Hybrid"
-                    ? "Work in person for part of the week, from the location"
-                    : "Work in person from the location"}
+                <p className="text-xl font-semibold">
+                  {associatedCompany.name}
                 </p>
               </div>
             </div>
-          </div>
 
-          <div className="border-b-2 border-slate-300 pb-4 mb-4">
-            <h3 className="text-lg font-semibold mb-2">
-              {associatedCompany.name}
-            </h3>
-            <p className="mb-1">{selectedJob.description}</p>
-          </div>
+            <div className="border-b-2 border-slate-300 pb-4 mb-4">
+              <h2 className="text-3xl font-bold tracking-wide mb-4">
+                {selectedJob.title}
+              </h2>
+              <p>
+                Applied {formatDateToAgo(selectedJob.creationDate)} days ago
+              </p>
+            </div>
 
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">
-              What they're looking for
-            </h3>
-            <div className="flex gap-2 flex-wrap w-[75%]">
-              {selectedJob.techs.map((tech, index) => {
-                return (
-                  <p
-                    className="bg-slate-200 min-w-fit py-2 px-4 rounded font-semibold whitespace-nowrap"
-                    key={index}
-                  >
-                    {tech}
+            <div className="border-b-2 border-slate-300 pb-4 mb-4">
+              <h3 className="font-semibold text-2xl mb-6">Details</h3>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-8">
+                  <FontAwesomeIcon
+                    className="text-2xl"
+                    icon={faMoneyCheckDollar}
+                  />
+                </div>
+                <p className="font-semibold">{selectedJob.salaryRange}/yr</p>
+              </div>
+              <div className="flex items-center gap-4 mb-2">
+                <div className="w-8">
+                  <FontAwesomeIcon className="text-2xl" icon={faLocationDot} />
+                </div>
+                <div>
+                  <p className="font-semibold">
+                    {selectedJob.remote}
+                    {selectedJob.remote !== "Remote" &&
+                      `, based in ${associatedCompany.address.city}, ${associatedCompany.address.state}`}
                   </p>
-                );
-              })}
+                  <p>
+                    {selectedJob.remote === "Remote"
+                      ? "Work from home"
+                      : selectedJob.remote === "Hybrid"
+                      ? "Work in person for part of the week, from the location"
+                      : "Work in person from the location"}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-b-2 border-slate-300 pb-4 mb-4">
+              <h3 className="text-lg font-semibold mb-2">
+                {associatedCompany.name}
+              </h3>
+              <p className="mb-1">{selectedJob.description}</p>
+            </div>
+
+            <div>
+              <h3 className="text-2xl font-semibold mb-4">
+                What they're looking for
+              </h3>
+              <div className="flex gap-2 flex-wrap w-[75%]">
+                {selectedJob.techs.map((tech, index) => {
+                  return (
+                    <p
+                      className="bg-slate-200 min-w-fit py-2 px-4 rounded font-semibold whitespace-nowrap"
+                      key={index}
+                    >
+                      {tech}
+                    </p>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
