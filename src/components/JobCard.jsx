@@ -31,9 +31,11 @@ export const JobCard = ({ job, selectedJob }) => {
   return (
     <Link to={`/jobs/${job.id}`}>
       <div
-        className={`flex justify-between px-2 rounded-lg bg-white cursor-pointer transition-all ${
+        className={`flex justify-between px-2 rounded-lg cursor-pointer transition-all ${
           !selectedJob && "shadow-md hover:shadow-none hover:translate-y-[2px]"
-        } ${selectedJob && job.id === selectedJob.id && "bg-green-200"}`}
+        } ${
+          selectedJob && job.id === selectedJob.id ? "bg-green-200" : "bg-white"
+        }`}
       >
         <div className="flex flex-col gap-2 p-4 ">
           <h1 className="text-2xl font-semibold">{job.title}</h1>
