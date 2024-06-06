@@ -54,7 +54,7 @@ export const ManageJobForm = ({
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
-        <div className="relative w-auto my-6 mx-auto max-w-3xl max-[500px]:mx-4">
+        <div className="relative my-6 mx-auto w-auto md:w-[540px] max-w-5xl max-[500px]:mx-4">
           {/*content*/}
           <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
             {/*header*/}
@@ -74,7 +74,7 @@ export const ManageJobForm = ({
 
             {/*body*/}
             <div className="relative p-6 flex-auto">
-              <form className="w-full max-w-lg" onSubmit={handleSubmit}>
+              <form className="w-full max-w-lg mx-auto" onSubmit={handleSubmit}>
                 {/* Title */}
                 <div className="flex flex-wrap -mx-3 mb-6">
                   <div className="w-full px-3">
@@ -108,7 +108,7 @@ export const ManageJobForm = ({
                     <textarea
                       onChange={handleFormChange}
                       value={formData.description}
-                      className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+                      className="h-[20vh] appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                       id="description"
                       name="description"
                       type="text"

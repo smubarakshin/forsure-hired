@@ -11,6 +11,8 @@ import JobsPage from "./pages/JobsPage";
 
 import JobsAI from "./pages/JobsAI";
 
+import ErrorPage from "./pages/ErrorPage";
+
 function App() {
   return (
     <div className="bg-gray-100 min-h-[100vh] flex flex-col">
@@ -23,6 +25,7 @@ function App() {
 
         <Route path="/ai" element={<JobsAI />} />
         <Route path="/ai/:jobId" element={<JobsAI />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
 
       <ToastContainer autoClose={2000} />
