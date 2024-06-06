@@ -37,7 +37,7 @@ export const JobCard = ({ job, selectedJob }) => {
           selectedJob && job.id === selectedJob.id ? "bg-green-200" : "bg-white"
         }`}
       >
-        <div className="flex flex-col gap-2 p-4 ">
+        <div className="max-[400px]:w-[175px] w-full flex flex-col gap-2 p-4 ">
           <h1 className="text-2xl font-semibold">{job.title}</h1>
           <p className="text-slate-400">{companyShortAddress(job)}</p>
           <p className=" text-white flex gap-1 flex-wrap">
@@ -52,7 +52,9 @@ export const JobCard = ({ job, selectedJob }) => {
           </p>
         </div>
         <div className="flex flex-col gap-2 py-2 px-4 justify-center items-end">
-          <h1 className="text-xl whitespace-nowrap">{job.salaryRange}</h1>
+          <h1 className="text-md sm:text-xl whitespace-nowrap">
+            {job.salaryRange}
+          </h1>
           <p className="bg-blue-600 text-white px-2 rounded-3xl">
             {job.remote}
           </p>

@@ -29,7 +29,7 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
     >
       <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3 py-2">
         <h1 className="text-center text-4xl  py-2 font-semibold  ">
-          Job Description
+          Job Details
         </h1>
       </div>
       {selectedJob && associatedCompany ? (
