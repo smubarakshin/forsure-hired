@@ -4,6 +4,8 @@ import axios from "axios";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { TypingIndicator } from "@chatscope/chat-ui-kit-react";
 import { useParams } from "react-router-dom";
+import arrowBack from "../images/arrow-back.svg";
+import { useNavigate } from "react-router-dom";
 
 import { JobsContext } from "../context/Jobs.context";
 
@@ -25,6 +27,7 @@ function JobsAI() {
   const [descriptionFromJobPage, setDescriptionFromJobPage] = useState(null);
   const { getJob } = useContext(JobsContext);
   const { jobId } = useParams();
+  const navigate = useNavigate();
 
   const generateJobDescription = (job) => {
     return `Title: ${job.title}\n
@@ -128,20 +131,32 @@ Technologies: ${job.techs.join(", ")}`;
       <div className="mt-16 flex flex-col items-center text-slate-700">
         {!chatGPTJSONResponse ? (
           <>
-            <h1 className="text-4xl font-semibold mb-8 text-center">
-              Provide a Job Description
-            </h1>
+            <div className="relative flex flex-wrap w-full justify-center max-w-[800px] mb-8">
+              {jobId && (
+                <img
+                  src={arrowBack}
+                  alt="arrow back"
+                  className="pl-[5%] absolute left-0 h-10 z-20 cursor-pointer"
+                  onClick={() => navigate(-1)}
+                />
+              )}
+              <h1 className="text-4xl text-center font-semibold relative  w-[300px] md:w-full ">
+                Provide a Job Description
+              </h1>
+            </div>
             <form
               className="flex flex-col items-center w-[90%] md:w-full max-w-[700px]"
               onSubmit={handleSubmit}
             >
-              <div className="flex gap-2 mb-8">
+              <div className="flex flex-wrap justify-center gap-2 mb-8">
                 {descriptionFromJobPage && (
                   <label
                     className={`p-4 rounded cursor-pointer ${
+                      typing && "cursor-not-allowed"
+                    } ${
                       jobDescription === descriptionFromJobPage
                         ? "bg-green-100 border border-1 border-green-600 text-green-700"
-                        : "bg-slate-200"
+                        : "bg-slate-200 hover:bg-slate-300"
                     }`}
                     htmlFor="descriptionFromJobPage"
                   >
@@ -153,15 +168,18 @@ Technologies: ${job.techs.join(", ")}`;
                       id="descriptionFromJobPage"
                       value={descriptionFromJobPage}
                       checked={jobDescription === descriptionFromJobPage}
+                      disabled={typing ? true : false}
                     />
                     <span>Current Job</span>
                   </label>
                 )}
                 <label
                   className={`p-4 rounded cursor-pointer ${
+                    typing && "cursor-not-allowed"
+                  } ${
                     jobDescription === ""
                       ? "bg-green-100 border border-1 border-green-600 text-green-700"
-                      : "bg-slate-200"
+                      : "bg-slate-200 hover:bg-slate-300"
                   }`}
                   htmlFor="custom"
                 >
@@ -173,14 +191,17 @@ Technologies: ${job.techs.join(", ")}`;
                     id="custom"
                     value={""}
                     checked={jobDescription === ""}
+                    disabled={typing ? true : false}
                   />
                   <span>Custom</span>
                 </label>
                 <label
                   className={`p-4 rounded cursor-pointer ${
+                    typing && "cursor-not-allowed"
+                  } ${
                     jobDescription === softwareEngineerJobDescription
                       ? "bg-green-100 border border-1 border-green-600 text-green-700"
-                      : "bg-slate-200"
+                      : "bg-slate-200 hover:bg-slate-300"
                   }`}
                   htmlFor="softwareEngineer"
                 >
@@ -192,6 +213,7 @@ Technologies: ${job.techs.join(", ")}`;
                     id="softwareEngineer"
                     value={softwareEngineerJobDescription}
                     checked={jobDescription === softwareEngineerJobDescription}
+                    disabled={typing ? true : false}
                   />
                   <span>Software Engineer</span>
                 </label>
@@ -209,7 +231,10 @@ Technologies: ${job.techs.join(", ")}`;
               />
 
               {typing ? (
-                <TypingIndicator content="Generating Questions" />
+                <TypingIndicator
+                  className="text-2xl"
+                  content="Generating Questions"
+                />
               ) : (
                 <button className="bg-slate-200 text-xl p-4 rounded-md ease-in-out duration-300 hover:scale-105 hover:bg-green-400 hover:text-white mb-12">
                   Generate Questions

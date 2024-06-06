@@ -56,7 +56,7 @@ function JobsPage() {
         <img
           src={arrowBack}
           alt="arrow back"
-          className="absolute mt-4 left-2 h-10 md:hidden z-20"
+          className="absolute mt-4 left-2 h-10 md:hidden z-20 cursor-pointer"
           onClick={() => setSelectedJob(emptyJob)}
         />
       )}
