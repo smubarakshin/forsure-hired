@@ -19,12 +19,12 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
     let now = Date.now();
     return Math.floor((now - currDate) / 86400000);
   };
-
+  console.log(selectedJob);
   return (
     <div
       className={`${
-        !selectedJob ? "hidden" : "flex"
-      } md:flex flex-col gap-4 min-w-[50vw] px-2 w-full mb-10 md:mb-6`}
+        !selectedJob.id ? "hidden" : "flex"
+      } md:flex flex-col gap-4 min-w-[50vw] px-2 w-full mb-2`}
     >
       <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3 py-2">
         <h1 className="text-center text-4xl  py-2 font-semibold  ">
