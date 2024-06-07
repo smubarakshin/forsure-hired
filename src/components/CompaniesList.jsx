@@ -92,7 +92,10 @@ const CompaniesList = ({
                   onClick={() => setSelectedCompany(company)}
                   className="cursor-pointer"
                 >
-                  <CompanyCard company={company} />
+                  <CompanyCard
+                    company={company}
+                    selectedCompany={selectedCompany}
+                  />
                 </div>
 
                 <CompanyDropDown3Dots
