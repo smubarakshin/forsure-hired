@@ -1,9 +1,18 @@
 import locationIcon from "../images/location.svg";
 import starIcon from "../images/star-solid.svg";
 
-const CompanyCard = ({ company }) => {
+const CompanyCard = ({ company, selectedCompany }) => {
   return (
-    <div className="flex md:flex-wrap gap-2 p-4 rounded-lg w-[90%] m-auto shadow-md bg-white hover:shadow-none hover:translate-y-[2px] transition-all">
+    <div
+      className={`flex md:flex-wrap gap-2 p-4 rounded-lg w-[90%] m-auto shadow-md   transition-all ${
+        !selectedCompany &&
+        "shadow-md hover:shadow-none hover:translate-y-[2px]"
+      } ${
+        selectedCompany && company.id === selectedCompany.id
+          ? "bg-green-200"
+          : "bg-white hover:translate-y-[2px] hover:shadow-none"
+      }`}
+    >
       <img
         src={company.logo}
         alt="company logo"
