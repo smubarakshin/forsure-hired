@@ -25,7 +25,7 @@ function App() {
 
         <Route path="/ai" element={<JobsAI />} />
         <Route path="/ai/:jobId" element={<JobsAI />} />
-        <Route path="*" element={<ErrorPage />} />
+        <Route path="/*" element={<ErrorPage />} />
       </Routes>
 
       <ToastContainer autoClose={2000} />
