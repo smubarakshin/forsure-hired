@@ -1,5 +1,6 @@
 import React from "react";
 import "../error.css";
+import { Link } from "react-router-dom";
 
 function ErrorPage() {
   return (
@@ -16,8 +17,8 @@ function ErrorPage() {
             changed or is temporarily unavailable.
           </p>
           <p class="output">
-            Please try to <a href="/">go back</a> or{" "}
-            <a href="/">return to the homepage</a>.
+            Please try to <Link to={-1}>go back</Link> or{" "}
+            <Link to="/">return to the homepage</Link>.
           </p>
           <p class="output">Good luck.</p>
         </div>
