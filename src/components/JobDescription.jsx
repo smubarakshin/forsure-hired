@@ -25,15 +25,15 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
     <div
       className={`${
         !selectedJob.id ? "hidden" : "flex"
-      } md:flex flex-col gap-4 min-w-[50vw] px-2 w-full mb-2`}
+      } md:flex flex-col gap-4 min-w-[50vw] px-2 w-full mb-12`}
     >
-      <div className="inline-flex justify-evenly border-b-2 border-b-slate-500 mx-2 mb-3 py-2">
-        <h1 className="text-center text-4xl  py-2 font-semibold  ">
+      <div className="inline-flex justify-evenly">
+        {/* <h1 className="text-center text-4xl  py-2 font-semibold  ">
           Job Details
-        </h1>
+        </h1> */}
       </div>
       {selectedJob && associatedCompany ? (
-        <div className="my-0 md:px-20 px-10 py-10 bg-white rounded-lg overflow-y-auto relative">
+        <div className="my-0 px-10 py-10 bg-white rounded-lg overflow-y-auto relative">
           <div className="lg:w-[75%] lg:mx-auto">
             <div className="absolute top-4 right-4">
               <DropDown3Dots
