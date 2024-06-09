@@ -128,7 +128,7 @@ Technologies: ${job.techs.join(", ")}`;
 
   return (
     <>
-      <div className="mt-6 sm:mt-12 md:mt-16 flex flex-col items-center text-slate-700">
+      <div className="mt-6 sm:mt-12 flex flex-col items-center text-slate-700">
         {!chatGPTJSONResponse ? (
           <>
             <h1 className="w-full text-3xl sm:text-4xl text-center font-semibold relative px-4 mb-6">
@@ -222,7 +222,7 @@ Technologies: ${job.techs.join(", ")}`;
 
               {typing ? (
                 <TypingIndicator
-                  className="text-2xl"
+                  className="text-2xl mb-12"
                   content="Generating Questions"
                 />
               ) : (
