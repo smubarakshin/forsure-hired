@@ -25,7 +25,7 @@ function JobDescription({ selectedJob, setSelectedJob, associatedCompany }) {
     <div
       className={`${
         !selectedJob.id ? "hidden" : "flex"
-      } md:flex flex-col gap-4 min-w-[50vw] px-2 w-full mb-12`}
+      } md:flex flex-col gap-4 min-w-[50vw] px-2 w-full`}
     >
       <div className="inline-flex justify-evenly">
         {/* <h1 className="text-center text-4xl  py-2 font-semibold  ">

@@ -45,7 +45,7 @@ function JobsPage() {
   }, [jobId]);
 
   return (
-    <main className="text-slate-700 mx-2 lg:mx-auto lg:w-[80%] flex justify-between gap-2 md:h-[85vh] md:max-h-[85vh] md:overflow-hidden">
+    <main className="text-slate-700 mx-2 lg:mx-auto lg:w-[80%] flex justify-between gap-2 md:h-[85vh] md:max-h-[85vh] md:overflow-hidden mb-12">
       <JobsList
         setSelectedJob={setSelectedJob}
         selectedJob={selectedJob}
